@@ -4,7 +4,7 @@
 [core]
 	editor = nvim
 [color]
-	ui = auto
+	ui = true
 [diff]
 	tool = vimdiff
 [help]
