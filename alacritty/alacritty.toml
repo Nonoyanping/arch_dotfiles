@@ -1,0 +1,40 @@
+[general]
+import = [
+]
+
+working_directory = "~/"
+live_config_reload = true
+
+[window]
+padding = {x = 0, y = 0}
+# dynamic_padding = true
+decorations = "None"
+opacity = 0.75
+blur = true
+startup_mode = "Maximized" # "Windowes" | "Maximized" | "Fullscreen"
+
+[terminal.shell]
+args = ['--login']
+program = "/usr/bin/zsh"
+
+[cursor]
+style = { shape = "Block", blinking = "On" }
+
+[font]
+# Font List
+# [OOOO] CaskaydiaCoveNerdFontMono
+# [OOXX] DejaVuSansMNerdFontMono
+# [OOXX] FiraCodeNerdFontMono
+# [OOOO] JetBrainsMonoNerdFontMono
+# [OOOO] MesloLGSNerdFontMono
+# [OOOO] RobotoMonoNerdFontMono
+# [OOOO] SauceCodeProNerdFontMono
+# [OOOO] VictorMonoNerdFontMono
+
+normal = { family = "CaskaydiaCoveNerdFontMono", style = "Regular" }
+bold = { family = "CaskaydiaCoveNerdFontMono", style = "Bold" }
+italic = { family = "VictorMonoNerdFontMono", style = "Italic" }
+bold_italic = { family = "VictorMonoNerdFontMono", style = "Bold Italic" }
+
+size = 12.0
+offset = { x = 1, y = 1 }

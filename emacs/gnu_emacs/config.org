@@ -1,0 +1,12 @@
+#+TITLE: GNU Emacs Config in Org
+#+AUTHOR: YP
+
+#+STARTUP: showeverything
+#+OPTIONS: toc:2
+
+* IMPORTANT PROGRAM TO LOAD FIRST
+** Elpa Package Manager
+
+** Load Evil Mode
+
+** General Keybindings

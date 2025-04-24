@@ -1,0 +1,14 @@
+{
+  "Lua": {
+    "workspace": {
+      "library": ["~/dotfiles/wezterm/"],
+      "ignoreDir": ["**/runtimes/**"]
+    },
+    "runtime": {
+      "version": "Lua 5.4"
+    },
+    "hint": {
+      "enable": true
+    }
+  }
+}

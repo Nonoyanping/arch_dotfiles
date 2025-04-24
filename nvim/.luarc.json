@@ -1,0 +1,15 @@
+{
+  "Lua": {
+    "workspace": {
+      "checkThirdParty": false,
+      "ignoreDir": ["**/runtimes/**"],
+      "library": ["/home/yanping/dotfiles/nvim"]  // Replace with your absolute path
+    },
+    "runtime": {
+      "version": "Lua 5.4"
+    },
+    "hint": {
+      "enable": true
+    }
+  }
+}

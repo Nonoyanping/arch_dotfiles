@@ -1,0 +1,53 @@
+# The syntax is "key = value". The whitespace around the
+# equals doesn't matter.
+
+# Comments start with a `#` and are only valid on their own line.
+# Blank lines are ignored!
+
+theme = MaterialDarker
+font-thicken
+
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 2
+
+cursor-opacity = 0.7
+cursor-style = block
+cursor-style-blink = true
+
+unfocused-split-opacity = 0.825
+
+fullscreen = true
+window-inherit-working-directory = true
+
+###################################
+
+
+# 背景はちょっと透過している黒
+# background = 000
+# background-opacity = 0.70
+
+
+# はじめにtmuxを起動する
+# command = /opt/homebrew/bin/tmux
+
+# コマンドが終了したら表示内容を確認しておきたい
+# wait-after-command = true
+
+# メニューバーのタイトルを非表示にする
+# title = " "
+
+# window-padding-x = 5
+# window-padding-y = 5
+# window-padding-balance = true
+
+# 全画面表示させる
+# fullscreen
+
+
+# なんとなく色を変えてみる
+# macos-icon = custom-style
+# macos-icon-ghost-color = fa5
+# macos-icon-screen-color = 000
+
+# 環境によって変えるかも
+# quick-terminal-screen = mouse
