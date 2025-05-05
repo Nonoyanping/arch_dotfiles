@@ -27,3 +27,5 @@ alias l="eza -al"
 alias t="tree"
 alias lg="lazygit"
 alias h="tldr"
+
+alias virsh="virsh -c qemu:///system"

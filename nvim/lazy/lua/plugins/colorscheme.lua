@@ -7,8 +7,8 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      -- colorscheme = "everforest",
-      colorscheme = "material-darker",
+      colorscheme = "everforest",
+      -- colorscheme = "material-darker",
     },
   },
 }
