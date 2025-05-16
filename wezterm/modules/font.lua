@@ -9,6 +9,6 @@ local font_list = {
 	"VictorMonoNerdFontMono",
 }
 
-local fonts = font_list[5]
+local fonts = font_list[8]
 
 return fonts

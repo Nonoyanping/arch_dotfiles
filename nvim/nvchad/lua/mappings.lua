@@ -1,10 +1,10 @@
+-- Load default keymap from $XDG_DATA_HOME/nvim/lazy/NvChad/lua/nvchad/mappings.lua
 require "nvchad.mappings"
 
--- add yours here
-
 local map = vim.keymap.set
+local nomap = vim.keymap.del
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
-map("i", "jk", "<ESC>")
+map("n", "<C-c>", "<cmd>noh<CR>", { desc = "nohighlight" })
 
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+map("i", "jj", "<Esc>")

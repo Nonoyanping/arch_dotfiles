@@ -2,8 +2,12 @@
 import = [
 ]
 
-working_directory = "~/"
 live_config_reload = true
+
+[env]
+term = "xterm-256color"
+working_directory = "~/"
+
 
 [window]
 padding = {x = 0, y = 0}

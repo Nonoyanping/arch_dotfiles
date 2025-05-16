@@ -1,53 +1,56 @@
-# The syntax is "key = value". The whitespace around the
-# equals doesn't matter.
+# Minimal Ghostty Configuration for tmux
+# Save as: ~/.config/ghostty/config
 
-# Comments start with a `#` and are only valid on their own line.
-# Blank lines are ignored!
+# Use default material darker theme
+# theme = MaterialDarker
 
-theme = MaterialDarker
-font-thicken
+# Window appearance
+window-decoration = false
+background-opacity = 0.75
+background-blur-radius = 20
+window-padding-x = 0
+window-padding-y = 0
 
+# Font configuration  
+font-family = VictorMono NF SemiBold
+font-family-bold = VictorMono NF SemiBold
+font-family-italic = VictorMono NF Bold Italic
+font-family-bold-italic = VictorMono NF SemiBold Italic
+
+font-style-bold = true
+font-style-italic = true
+font-style-bold-italic = true
+font-thicken = true
+font-thicken-strength = 50
+font-size = 13
+
+# Terminal features
+scrollback-limit = 10000
+mouse-shift-capture = false
 mouse-hide-while-typing = true
-mouse-scroll-multiplier = 2
+copy-on-select = false
 
-cursor-opacity = 0.7
+# Disable all Ghostty keybindings since we're using tmux
+# keybind = clear
+keybind = ctrl+shift+r=reload_config
+# keybind = ctrl+shift+return=fullscreen
+
+# Cursor configuration
 cursor-style = block
 cursor-style-blink = true
+cursor-opacity = 0.75
 
-unfocused-split-opacity = 0.825
+# Performance settings
+auto-update = check
+
+# Integration settings - disable since tmux handles it
+shell-integration = none
+
+# Misc
+confirm-close-surface = false
+quit-after-last-window-closed = true
 
 fullscreen = true
+maximize
+# maximize = true
 window-inherit-working-directory = true
-
-###################################
-
-
-# 背景はちょっと透過している黒
-# background = 000
-# background-opacity = 0.70
-
-
-# はじめにtmuxを起動する
-# command = /opt/homebrew/bin/tmux
-
-# コマンドが終了したら表示内容を確認しておきたい
-# wait-after-command = true
-
-# メニューバーのタイトルを非表示にする
-# title = " "
-
-# window-padding-x = 5
-# window-padding-y = 5
-# window-padding-balance = true
-
-# 全画面表示させる
-# fullscreen
-
-
-# なんとなく色を変えてみる
-# macos-icon = custom-style
-# macos-icon-ghost-color = fa5
-# macos-icon-screen-color = 000
-
-# 環境によって変えるかも
-# quick-terminal-screen = mouse

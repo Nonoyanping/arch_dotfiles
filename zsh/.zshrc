@@ -4,12 +4,15 @@ ZSH_THEME="robbyrussell"  # Example (replace with your theme)
 
 # ===== 2. Source Helper Scripts (aliases, paths, etc.) =====
 source $XDG_CONFIG_HOME/zsh/scripts/alias.sh
+source $XDG_CONFIG_HOME/zsh/scripts/path.sh
 # source $XDG_CONFIG_HOME/zsh/scripts/tools.sh
-source $XDG_CONFIG_HOME/zsh/scripts/mode.sh
+source $XDG_CONFIG_HOME/zsh/scripts/vimode.sh
 source $XDG_CONFIG_HOME/zsh/scripts/tmux.sh
+source $XDG_CONFIG_HOME/zsh/scripts/utils.sh
+# source $XDG_CONFIG_HOME/zsh/scripts/restart.sh
 
 # source ~/.fzf.zsh                # fzf keybindings/completion
-[ -f ~/dotfiles/zsh/.fzf.zsh ] && source ~/dotfiles/zsh/.fzf.zsh
+[ -f $XDG_CONFIG_HOME/zsh/.fzf.zsh ] && source $XDG_CONFIG_HOME/zsh/.fzf.zsh
 
 # Enable vi-mode indicator
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
@@ -30,7 +33,7 @@ source $ZSH/oh-my-zsh.sh
 
 # ===== 5. Post-Load Config (e.g., vi-mode settings) =====
 # Reduce ESC delay in vi-mode
-export KEYTIMEOUT=10
+export KEYTIMEOUT=0
 
 # Add this to ~/.zshrc
 # function zle-line-init zle-keymap-select {
@@ -44,4 +47,7 @@ export KEYTIMEOUT=10
 # zle -N zle-line-init
 # zle -N zle-keymap-select
 
-ff
+# ff
+# Add at the very end of .zshrc
+bindkey '^R' fzf-history-widget
+export TERM=xterm-kitty

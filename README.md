@@ -3,9 +3,7 @@
 - [ ] bash + starship
 
 - [ ] bat, fzf, chezmoi, eza, fastfetch, fd, ripgrep, gum, lazygit, tmux
-```sh
 
-```
 
 - [ ] alacritty, ghostty, kitty, wezterm, warp
 
@@ -13,3 +11,5 @@
 
 - [ ] Golang, Rust, C/C++, Zig, Java, Python
 
+---
+- [ ] keyd
