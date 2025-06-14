@@ -8,3 +8,6 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 map("n", "<C-c>", "<cmd>noh<CR>", { desc = "nohighlight" })
 
 map("i", "jj", "<Esc>")
+map("n", "<leader>s", "<cmd>source %<CR>")
+map("n", "<leader><CR>", "<cmd>.lua<CR>")
+map("v", "<leader><CR>", ":lua<CR>")

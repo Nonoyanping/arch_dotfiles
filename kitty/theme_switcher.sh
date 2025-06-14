@@ -38,13 +38,13 @@ fzf --prompt="Theme: " \
     --preview-window "right:50%:border-rounded:wrap"
 # ##############################
 
-# Check if user actually selected something (not cancelled)
-if [ -n "$selected" ]; then
-    # Selection was made - theme is already applied by preview
-    echo "Applied: $selected"
-else
-    # User cancelled (ESC) - restore original theme
-    ln -sf "$THEMES_DIR/$original.conf" "$SYMLINK"
-    pkill -USR1 kitty 2>/dev/null
-    echo "Cancelled - Restored: $original"
-fi
+# # Check if user actually selected something (not cancelled)
+# if [ -n "$selected" ]; then
+#     # Selection was made - theme is already applied by preview
+#     echo "Applied: $selected"
+# else
+#     # User cancelled (ESC) - restore original theme
+#     ln -sf "$THEMES_DIR/$original.conf" "$SYMLINK"
+#     pkill -USR1 kitty 2>/dev/null
+#     echo "Cancelled - Restored: $original"
+# fi

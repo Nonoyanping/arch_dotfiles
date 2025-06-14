@@ -1,15 +1,15 @@
 # ===== 1. Set ZSH Theme (BEFORE plugins) =====
 # ZSH_THEME="powerlevel10k/powerlevel10k"  # Example (replace with your theme)
-ZSH_THEME="robbyrussell"  # Example (replace with your theme)
+ZSH_THEME="dst"
 
 # ===== 2. Source Helper Scripts (aliases, paths, etc.) =====
+export PATH="$HOME/dotfile/zsh/scripts:$PATH"
 source $XDG_CONFIG_HOME/zsh/scripts/alias.sh
 source $XDG_CONFIG_HOME/zsh/scripts/path.sh
-# source $XDG_CONFIG_HOME/zsh/scripts/tools.sh
 source $XDG_CONFIG_HOME/zsh/scripts/vimode.sh
 source $XDG_CONFIG_HOME/zsh/scripts/tmux.sh
 source $XDG_CONFIG_HOME/zsh/scripts/utils.sh
-# source $XDG_CONFIG_HOME/zsh/scripts/restart.sh
+source $XDG_CONFIG_HOME/zsh/scripts/navi.sh
 
 # source ~/.fzf.zsh                # fzf keybindings/completion
 [ -f $XDG_CONFIG_HOME/zsh/.fzf.zsh ] && source $XDG_CONFIG_HOME/zsh/.fzf.zsh

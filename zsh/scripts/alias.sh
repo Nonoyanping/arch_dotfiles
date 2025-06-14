@@ -13,17 +13,19 @@
 alias ..="cd .."
 alias ...="cd ../.."
 
-alias hx="helix"
+# alias hx="helix"
 
-alias zconf="cd $XDG_CONFIG_HOME/zsh && n ./.zshrc"
+alias zconf="cd $XDG_CONFIG_HOME/zsh && nvim ./.zshrc"
 alias bconf="hx $HOME/.bashrc"
 
-alias alaconf="cd $XDG_CONFIG_HOME/alacritty/ && n ./alacritty.toml"
-alias kconf="cd $XDG_CONFIG_HOME/kitty/ && n ./kitty.conf"
-alias gconf="cd $XDG_CONFIG_HOME/ghostty/ && n ./config"
-alias tconf="cd $XDG_CONFIG_HOME/tmux/ && n ./tmux.conf"
-alias nconf="cd $XDG_CONFIG_HOME/nvim/ && n ./init.lua"
-alias pj="cd $HOME/404/projects"
+alias alaconf="cd $XDG_CONFIG_HOME/alacritty/ && nvim./alacritty.toml"
+alias kconf="cd $XDG_CONFIG_HOME/kitty/ && nvim ./kitty.conf"
+alias gconf="cd $XDG_CONFIG_HOME/ghostty/ && nvim ./config"
+alias tconf="cd $XDG_CONFIG_HOME/tmux/ && nvim ./tmux.conf"
+alias nconf="cd $XDG_CONFIG_HOME/nvim/ && nvim ./init.lua"
+
+# TODO: Optimize workflow with fzf
+# alias pj="cd $HOME/404/projects"
 
 alias path='echo "$PATH" | tr ":" "\\n" | nl'
 alias ff="fastfetch"
@@ -32,8 +34,7 @@ alias l="eza -al"
 alias t="tree"
 alias lg="lazygit"
 alias h="tldr"
-alias n="nvim"
-alias nvim="sudo -E nvim"
+alias sunvim="sudo -E nvim"
 
 alias virsh="virsh -c qemu:///system"
 alias see="kitten icat"
