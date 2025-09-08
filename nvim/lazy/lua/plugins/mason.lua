@@ -16,6 +16,7 @@ return {
       "emmet-ls",
       "json-lsp",
       "eslint-lsp",
+      "rust-analyzer",
     },
   },
 }

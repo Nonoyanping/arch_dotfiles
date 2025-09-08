@@ -1,0 +1,36 @@
+-- change some telescope options and a keymap to browse plugin files
+return {
+  "nvim-telescope/telescope.nvim",
+  -- keys = {
+  --        -- add a keymap to browse plugin files
+  --        -- stylua: ignore
+  --        {
+  --            "<leader>fp",
+  --            function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
+  --            desc = "Find Plugin File",
+  --        },
+  -- change some options
+  opts = {
+    defaults = {
+      layout_strategy = "horizontal",
+      layout_config = { prompt_position = "top" },
+      sorting_strategy = "ascending",
+      winblend = 10,
+      -- find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden", "--follow", "--exclude", ".git" },
+      find_command = { "fd", "--type", "f", "--hidden", "--follow", "--exclude", "node_modules" },
+      -- find_command = { "fd", "--type", "f", "--hidden" },
+      file_ignore_patterns = {
+        "node_modules/",
+        "%.git/",
+        "%.cache",
+        "%.jpg",
+        "%.jpeg",
+        "%.png",
+        "%.svg",
+        "%.zip",
+        "%.pdf",
+        "%.mkv",
+      },
+    },
+  },
+}

@@ -4,12 +4,15 @@ ZSH_THEME="dst"
 
 # ===== 2. Source Helper Scripts (aliases, paths, etc.) =====
 export PATH="$HOME/dotfile/zsh/scripts:$PATH"
-source $XDG_CONFIG_HOME/zsh/scripts/alias.sh
 source $XDG_CONFIG_HOME/zsh/scripts/path.sh
 source $XDG_CONFIG_HOME/zsh/scripts/vimode.sh
 source $XDG_CONFIG_HOME/zsh/scripts/tmux.sh
 source $XDG_CONFIG_HOME/zsh/scripts/utils.sh
 source $XDG_CONFIG_HOME/zsh/scripts/navi.sh
+# source $XDG_CONFIG_HOME/zsh/scripts/alias.sh
+
+source /usr/share/nvm/init-nvm.sh
+source /usr/share/wikiman/widgets/widget.zsh
 
 # source ~/.fzf.zsh                # fzf keybindings/completion
 [ -f $XDG_CONFIG_HOME/zsh/.fzf.zsh ] && source $XDG_CONFIG_HOME/zsh/.fzf.zsh
@@ -31,6 +34,8 @@ plugins=(
 # ===== 4. Load Oh My Zsh =====
 source $ZSH/oh-my-zsh.sh
 
+source $XDG_CONFIG_HOME/zsh/scripts/alias.sh
+
 # ===== 5. Post-Load Config (e.g., vi-mode settings) =====
 # Reduce ESC delay in vi-mode
 export KEYTIMEOUT=0
@@ -51,3 +56,11 @@ export KEYTIMEOUT=0
 # Add at the very end of .zshrc
 bindkey '^R' fzf-history-widget
 export TERM=xterm-kitty
+
+# pnpm
+export PNPM_HOME="/home/yanping/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

@@ -23,6 +23,8 @@ return {
       "vim",
       "vimdoc",
       "yaml",
+      "rust",
+      "ron",
     })
   end,
 }

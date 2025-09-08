@@ -1,0 +1,105 @@
+# ~/.config/xremap/config.yml
+
+# The `modmap` section is for redefining modifier keys or creating tap-hold behaviors.
+# This is the equivalent of keyd's `overload` function.
+modmap:
+  # capslock = overloadt2(control, esc, 100)
+  - name: CapsLock to Control/Escape
+    remap:
+      CapsLock:
+        held: Control_L
+        alone: Escape
+        timeout: 200 # A slightly more generous timeout than 100ms
+
+  # leftalt = overloadt2(meta, space, 100)
+  - name: LeftAlt to Super/Space
+    remap:
+      LeftAlt:
+        held: Super_L # 'meta' in keyd is usually the Super/Windows key
+        alone: Space
+        timeout: 200
+
+  # muhenkan = overloadt2(alt, space, 100)
+  - name: Muhenkan to Alt/Space
+    remap:
+      Muhenkan:
+        held: Alt_L
+        alone: Space
+        timeout: 200
+
+  # henkan = overloadt2(meta, space, 100)
+  - name: Henkan to Super/Space
+    remap:
+      Henkan:
+        held: Super_L
+        alone: Space
+        timeout: 200
+
+# The `keymap` section defines your layers, which xremap calls "modes".
+keymap:
+  # This first block has no `mode`, so it applies globally (like keyd's [main]).
+  # We use this to define our layer-entry key.
+  # keyd: enter = overloadt2(launcher, enter, 150)
+  - name: "Enter to Launcher Layer"
+    remap:
+      # Holding Enter will activate the 'launcher' mode. Tapping it sends Enter.
+      Enter:
+        held: { set_mode: "launcher" }
+        alone: { key: "Enter" }
+        timeout: 250
+
+  # --- Launcher Layer ---
+  # Corresponds to your [launcher] layer in keyd.
+  - name: "Launcher Mode"
+    mode: "launcher"
+    remap:
+      # keyd: v = macro(toggle(launcher) toggle(vim)) -> xremap: set mode to vim
+      V: { set_mode: "vim" }
+      M: { set_mode: "media" }
+      F: { set_mode: "fn" }
+      # keyd: esc = toggle(launcher) -> xremap: return to default mode
+      # This is handled by your CapsLock modmap, which sends Escape.
+      Escape: { set_mode: "default" }
+
+  # --- Vim Navigation Layer ---
+  # Corresponds to your [vim] layer in keyd.
+  - name: "Vim Navigation Mode"
+    mode: "vim"
+    remap:
+      H: Left
+      J: Down
+      K: Up
+      L: Right
+      A: Home
+      E: End
+      # keyd: w = C-right
+      W: { with_modifier: "Control", key: "Right" }
+      # keyd: b = C-left
+      B: { with_modifier: "Control", key: "Left" }
+      D: PageDown
+      U: PageUp
+      # keyd: esc = toggle(vim)
+      Escape: { set_mode: "default" }
+
+  # --- Media Control Layer ---
+  # Corresponds to your [media] layer in keyd.
+  - name: "Media Control Mode"
+    mode: "media"
+    remap:
+      H: XF86AudioPrev # prevsong
+      L: XF86AudioNext # nextsong
+      Space: XF86AudioPlay # playpause
+      J: XF86AudioLowerVolume # volumedown
+      K: XF86AudioRaiseVolume # volumeup
+      # keyd: esc = toggle(media)
+      Escape: { set_mode: "default" }
+
+  # --- Fn Key Layer ---
+  # Corresponds to your [fn] layer in keyd.
+  - name: "Function Key Mode"
+    mode: "fn"
+    remap:
+      R: F2
+      F: F11
+      # keyd: esc = toggle(fn)
+      Escape: { set_mode: "default" }

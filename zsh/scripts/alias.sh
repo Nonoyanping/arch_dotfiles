@@ -30,9 +30,11 @@ alias nconf="cd $XDG_CONFIG_HOME/nvim/ && nvim ./init.lua"
 alias path='echo "$PATH" | tr ":" "\\n" | nl'
 alias ff="fastfetch"
 alias ibusr="ibus restart"
-alias l="eza -al"
+alias l='eza -al --icons'
+alias lt='eza -T --icons'
 alias t="tree"
 alias lg="lazygit"
+alias ldc="lazydocker"
 alias h="tldr"
 alias sunvim="sudo -E nvim"
 
