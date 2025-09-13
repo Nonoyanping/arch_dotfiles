@@ -64,3 +64,5 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+source $XDG_CONFIG_HOME/zsh/scripts/vars.sh

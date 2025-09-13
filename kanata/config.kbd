@@ -1,0 +1,103 @@
+;; ----------------------------------------------------------------------------
+;; GLOBAL CONFIGURATION
+;; ----------------------------------------------------------------------------
+(defcfg
+  ;; For Linux, this is a robust way to grab all keyboards without
+  ;; accidentally grabbing kanata's own virtual output device.
+  linux-dev-names-exclude "kanata-virtual-device"
+)
+
+;; ----------------------------------------------------------------------------
+;; KEY & ALIAS DEFINITIONS
+;; ----------------------------------------------------------------------------
+
+;; This section lists all the physical keys you intend to remap.
+;; You will need to add any keys used in your layer files here.
+(defsrc
+  caps  spc   ret
+  henk  muhe
+  ;; pgup  pgdn  lalt  lctl  ralt rctl ;; For your commented-out keys
+  ;; Add keys from your vim, media, etc. layers here e.g. h j k l a b c...
+)
+
+;; This is where we define our custom actions, translating `overloadt2`.
+;; Using aliases makes the main layer definition much cleaner.
+(defalias
+
+  ;; capslock = overloadt2(control, esc, 100)
+  ;; (tap-hold <tap-timeout> <hold-timeout> <tap-action> <hold-action>)
+  ;; To replicate keyd's 't2' behavior, set both timeouts to the same value.
+  caps_esc_ctl (tap-hold 100 100 esc lctl)
+
+  ;; space = overloadt2(alt, space, 125)
+  spc_alt (tap-hold 125 125 spc lalt)
+
+  ;; henkan = overloadt2(meta, space, 100)
+  ;; NOTE: 'lmet' is the Super/Windows key in kanata
+  henk_spc_met (tap-hold 100 100 spc lmet)
+
+  ;; muhenkan = overloadt2(meta, space, 100)
+  muhe_spc_met (tap-hold 100 100 spc lmet)
+
+
+  ;; --- Examples for your commented-out keyd bindings ---
+  ;; enter = overloadt2(launcher, enter, 150)
+  ;; Layer switching is done with actions like `layer-toggle` or `layer-while-held`
+  ;; enter_launch (tap-hold 150 150 ret (layer-toggle launcher))
+
+  ;; leftalt = overloadt2(meta, space, 150)
+  ;; lalt_spc_met (tap-hold 150 150 spc lmet)
+
+  ;; pgdn = overload(rightalt, end)
+  ;; pgdn_end_ralt (tap-hold 200 200 end ralt) ;; 'overload' usually implies a 200ms timeout
+
+  ;; pgup = overload(rightcontrol, home)
+  ;; pgup_home_rctl (tap-hold 200 200 home rctl)
+)
+
+;; ----------------------------------------------------------------------------
+;; LAYER DEFINITIONS
+;; ----------------------------------------------------------------------------
+
+;; This is your main/base layer.
+(deflayer main
+  caps @caps_esc_ctl
+  spc  @spc_alt
+  henk @henk_spc_met
+  muhe @muhe_spc_met
+  ;; ret  @enter_launch ;; This was commented out in your keyd config
+)
+
+
+;; IMPORTANT: You must merge your layer files below.
+;; kanata does not have an 'include' directive.
+;;
+;; Here is an EXAMPLE of how you would convert your 'layers/vim' file.
+;; You need to do this for launcher, media, and fn as well.
+(deflayer vim
+  ;; 'fallthrough' means any key not defined here will use the binding
+  ;; from the layer below it (in this case, 'main'). This is desired.
+  fallthrough true
+
+  ;; Example vim-style navigation keys
+  h lft
+  j down
+  k up
+  l rght
+  ;; ...add all other keybindings from your layers/vim.conf file here
+)
+
+;; (deflayer launcher
+;;   fallthrough true
+;;   ...
+;; )
+
+;; (deflayer media
+;;   fallthrough true
+;;   ...
+;; )
+
+;; (deflayer fn
+;;   fallthrough true
+;;   ...
+;; )
