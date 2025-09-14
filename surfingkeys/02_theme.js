@@ -1,4 +1,5 @@
 // 02_theme.js - A clean theme based on the Nord color palette
+api.Front.showBanner("theme.js loaded!", 1500);
 
 settings.theme = `
 /* Use CSS variables for easy customization */

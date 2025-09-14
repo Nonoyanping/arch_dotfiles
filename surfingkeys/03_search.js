@@ -1,4 +1,5 @@
 // 03_search.js - Custom search engines
+api.Front.showBanner("search.js loaded!", 1500);
 
 // Remove defaults we don't use
 api.removeSearchAlias('b'); // Baidu

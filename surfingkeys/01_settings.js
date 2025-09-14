@@ -1,4 +1,5 @@
 // 01_settings.js - Core behaviors
+api.Front.showBanner("settings.js loaded!", 1500);
 
 // Set the leader key. The comma is a good choice because it's easy to reach.
 // All custom mappings will start with this key.

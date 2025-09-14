@@ -1,4 +1,5 @@
 // 05_sites.js - Mappings that only activate on specific websites
+api.Front.showBanner("sites.js loaded!", 1500);
 
 // --- YOUTUBE ---
 const ytDomain = { domain: /youtube\.com/i };

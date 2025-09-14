@@ -1,4 +1,5 @@
 // 04_mappings.js - Powerful, general-purpose mappings
+api.Front.showBanner("mappings.js loaded!", 1500);
 
 // --- NAVIGATION ---
 api.map('h', 'S'); // Back in history
