@@ -5,4 +5,4 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 
 ## Todos
 
-- [ ] walk through the config files and understand what each part does
+* [ ] walk through the config files and understand what each part does
