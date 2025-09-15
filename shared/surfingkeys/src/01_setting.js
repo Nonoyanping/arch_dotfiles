@@ -1,9 +1,9 @@
-// 01_settings.js - Core behaviors
-api.Front.showBanner("settings.js loaded!", 1500);
-
+// -----------------------------------
+// | 01_settings.js - Core behaviors |
+// -----------------------------------
 // Set the leader key. The comma is a good choice because it's easy to reach.
 // All custom mappings will start with this key.
-settings.leader = ',';
+settings.leader = ' ';
 
 // Ignore specific input fields when in insert mode
 settings.ignoredFrameProps = [
@@ -20,3 +20,5 @@ settings.hintAlign = "left";
 
 // Don't let the omnibar get too long
 settings.omnibarMaxResults = 10;
+
+

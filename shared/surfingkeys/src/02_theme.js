@@ -1,18 +1,21 @@
-// name: Rosé Pine
+// ---------------------------------------------------------------
+// | 02_theme.js - A clean theme based on the Nord color palette |
+// ---------------------------------------------------------------
+// name: Rosé Pine Moon
 // author: thuanowa
 // license: unlicense
-// upstream: https://github.com/rose-pine/surfingkeys/blob/main/dist/rose-pine.conf
+// upstream: https://github.com/rose-pine/surfingkeys/blob/main/dist/rose-pine-moon.conf
 // blurb: All natural pine, faux fur and a bit of soho vibes for the classy minimalist
 
 const hintsCss =
-    "font-size: 13pt; font-family: 'JetBrains Mono NL', 'Cascadia Code', 'Helvetica Neue', Helvetica, Arial, sans-serif; border: 0px; color: #e0def4 !important; background: #191724; background-color: #191724";
+    "font-size: 13pt; font-family: 'JetBrains Mono NL', 'Cascadia Code', 'Helvetica Neue', Helvetica, Arial, sans-serif; border: 0px; color: #e0def4 !important; background: #232136; background-color: #232136";
 
 api.Hints.style(hintsCss);
 api.Hints.style(hintsCss, "text");
 
 settings.theme = `
   .sk_theme {
-    background: #191724;
+    background: #232136;
     color: #e0def4;
   }
   .sk_theme input {
@@ -22,17 +25,17 @@ settings.theme = `
     color: #c4a7e7;
   }
   .sk_theme .annotation {
-    color: #ebbcba;
+    color: #ea9a97;
   }
   .sk_theme kbd {
-    background: #26233a;
+    background: #393552;
     color: #e0def4;
   }
   .sk_theme .frame {
-    background: #1f1d2e;
+    background: #2a273f;
   }
   .sk_theme .omnibar_highlight {
-    color: #403d52;
+    color: #44415a;
   }
   .sk_theme .omnibar_folder {
     color: #e0def4;
@@ -50,7 +53,7 @@ settings.theme = `
     color: #e0def4;
   }
   .sk_theme .separator {
-    color: #524f67;
+    color: #56526e;
   }
   body {
     margin: 0;
@@ -65,7 +68,7 @@ settings.theme = `
     max-height: 80%;
     left: 10%;
     text-align: left;
-    box-shadow: 0px 2px 10px #21202e;
+    box-shadow: 0px 2px 10px #2a283e;
     z-index: 2147483000;
   }
   .sk_omnibar_middle {
@@ -98,7 +101,7 @@ settings.theme = `
   #sk_omnibarSearchArea {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #524f67;
+    border-bottom: 1px solid #56526e;
   }
   .sk_omnibar_middle #sk_omnibarSearchArea {
     margin: 0.5rem 1rem;
@@ -131,13 +134,13 @@ settings.theme = `
     overflow-y: auto;
   }
   .sk_theme #sk_omnibarSearchResult>ul>li:nth-child(odd) {
-    background: #1f1d2e;
+    background: #2a273f;
   }
   .sk_theme #sk_omnibarSearchResult>ul>li.focused {
-    background: #26233a;
+    background: #393552;
   }
   .sk_theme #sk_omnibarSearchResult>ul>li.window {
-    border: 2px solid #524f67;
+    border: 2px solid #56526e;
     border-radius: 8px;
     margin: 4px 0px;
   }
@@ -168,7 +171,7 @@ settings.theme = `
     display: inline-block;
     padding: 5px;
     margin: 5px;
-    box-shadow: 0px 2px 10px #21202e;
+    box-shadow: 0px 2px 10px #2a283e;
   }
   #sk_status {
     position: fixed;
@@ -177,7 +180,7 @@ settings.theme = `
     z-index: 2147483000;
     padding: 4px 8px 0 8px;
     border-radius: 4px 4px 0px 0px;
-    border: 1px solid #524f67;
+    border: 1px solid #56526e;
     font-size: 12px;
   }
   #sk_status>span {
@@ -185,7 +188,7 @@ settings.theme = `
   }
   .expandRichHints span.annotation {
     padding-left: 4px;
-    color: #ebbcba;
+    color: #ea9a97;
   }
   .expandRichHints .kbd-span {
     min-width: 30px;
@@ -210,7 +213,7 @@ settings.theme = `
     bottom: 0px;
     z-index: 2147483000;
     right: 0px;
-    background: #191724;
+    background: #232136;
     color: #e0def4;
   }
   #sk_usage, #sk_popup, #sk_editor {
@@ -221,7 +224,7 @@ settings.theme = `
     top: 10%;
     left: 10%;
     text-align: left;
-    box-shadow: #21202e;
+    box-shadow: #2a283e;
     z-index: 2147483298;
     padding: 1rem;
   }
@@ -249,7 +252,7 @@ settings.theme = `
     padding-bottom: 4px;
   }
   #sk_usage .feature_name>span {
-    border-bottom: 2px solid #524f67;
+    border-bottom: 2px solid #56526e;
   }
   #sk_usage span.annotation {
     padding-left: 32px;
@@ -265,10 +268,10 @@ settings.theme = `
     font: 11px "JetBrains Mono NL", "Cascadia Code", "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 10px;
     vertical-align: middle;
-    border: solid 1px #524f67;
-    border-bottom-lolor: #524f67;
+    border: solid 1px #56526e;
+    border-bottom-lolor: #56526e;
     border-radius: 3px;
-    box-shadow: inset 0 -1px 0 #21202e;
+    box-shadow: inset 0 -1px 0 #2a283e;
   }
   #sk_banner {
     padding: 0.5rem;
@@ -278,10 +281,10 @@ settings.theme = `
     z-index: 2147483000;
     width: 80%;
     border-radius: 8px 8px 8px 8px;
-    border: 2px solid #ebbcba;
+    border: 2px solid #ea9a97;
 	color: #f6c177;
     text-align: center;
-    background: #191724;
+    background: #232136;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -306,8 +309,8 @@ settings.theme = `
     border-radius: 3px;
     padding: 10px 20px;
     margin: 5px;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#191724), color-stop(100%,#191724));
-    box-shadow: 0px 3px 7px 0px #21202e;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#232136), color-stop(100%,#232136));
+    box-shadow: 0px 3px 7px 0px #2a283e;
   }
   div.sk_tab_wrap {
     display: inline-block;
@@ -344,11 +347,11 @@ settings.theme = `
     font-size: 10pt;
     font-weight: bold;
     padding: 0px 2px 0px 2px;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#191724), color-stop(100%,#191724));
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#232136), color-stop(100%,#232136));
     color: #e0def4;
-    border: solid 1px #524f67;
+    border: solid 1px #56526e;
     border-radius: 3px;
-    box-shadow: #21202e;
+    box-shadow: #2a283e;
   }
   #sk_tabs.vertical div.sk_tab_hint {
     position: initial;
@@ -360,11 +363,11 @@ settings.theme = `
   #sk_bubble {
     position: absolute;
     padding: 9px;
-    border: 1px solid #524f67;
+    border: 1px solid #56526e;
     border-radius: 4px;
-    box-shadow: 0 0 20px #21202e;
+    box-shadow: 0 0 20px #2a283e;
     color: #e0def4;
-    background-color: #191724;
+    background-color: #232136;
     z-index: 2147483000;
     font-size: 14px;
   }
@@ -375,13 +378,13 @@ settings.theme = `
     background-repeat: no-repeat;
   }
   .sk_scroller_indicator_top {
-    background-image: linear-gradient(#191724, transparent);
+    background-image: linear-gradient(#232136, transparent);
   }
   .sk_scroller_indicator_middle {
-    background-image: linear-gradient(transparent, #191724, transparent);
+    background-image: linear-gradient(transparent, #232136, transparent);
   }
   .sk_scroller_indicator_bottom {
-    background-image: linear-gradient(transparent, #191724);
+    background-image: linear-gradient(transparent, #232136);
   }
   #sk_bubble * {
     color: #e0def4 !important;
@@ -395,10 +398,10 @@ settings.theme = `
     background: transparent;
   }
   div.sk_arrow[dir=down]>div:nth-of-type(1) {
-    border-top: 12px solid #524f67;
+    border-top: 12px solid #56526e;
   }
   div.sk_arrow[dir=up]>div:nth-of-type(1) {
-    border-bottom: 12px solid #524f67;
+    border-bottom: 12px solid #56526e;
   }
   div.sk_arrow>div:nth-of-type(2) {
     left: 2px;
@@ -434,3 +437,5 @@ settings.theme = `
     }
   }
 `;
+
+
