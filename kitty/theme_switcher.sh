@@ -16,27 +16,26 @@ original=$(readlink -f "$SYMLINK" | xargs basename -s .conf)
 #         --height 10 \
 #         --preview "ln -sf $THEMES_DIR/{}.conf $SYMLINK 2>/dev/null; pkill -USR1 kitty 2>/dev/null")
 
-
-# ##############################
-# Use fzf with inline preview
-find "$THEMES_DIR" -name "*.conf" -exec basename -s .conf {} \; | \
-fzf --prompt="Theme: " \
-    --height 20 \
-    --border rounded \
-    --margin 1,2 \
-    --padding 1 \
-    --no-info \
-    --separator "" \
-    --layout reverse \
-    --preview "
+# ###############################
+# # Use fzf with inline preview #
+# ###############################
+find "$THEMES_DIR" -name "*.conf" -exec basename -s .conf {} \; |
+    fzf --prompt="Theme: " \
+        --height 20 \
+        --border rounded \
+        --margin 1,2 \
+        --padding 1 \
+        --no-info \
+        --separator "" \
+        --layout reverse \
+        --preview "
         ln -sf $THEMES_DIR/{}.conf $SYMLINK 2>/dev/null
         pkill -USR1 kitty 2>/dev/null
         echo '=== {}.conf ==='
         echo ''
         cat $THEMES_DIR/{}.conf
     " \
-    --preview-window "right:50%:border-rounded:wrap"
-# ##############################
+        --preview-window "right:50%:border-rounded:wrap"
 
 # # Check if user actually selected something (not cancelled)
 # if [ -n "$selected" ]; then

@@ -1,27 +1,60 @@
-// -----------------------------------
-// | 01_settings.js - Core behaviors |
-// -----------------------------------
-// Set the leader key. The comma is a good choice because it's easy to reach.
+// ###################################
+// # 01_settings.js - Core behaviors #
+// ###################################
+const {
+    aceVimMap,
+    mapkey: mapkey_,
+    imap,
+    iunmap,
+    imapkey: imapkey_,
+    getClickableElements,
+    vmap,
+    vmapkey: vmapkey_,
+    map: nmap,
+    unmap: nunmap,
+    cmap,
+    addSearchAlias,
+    removeSearchAlias,
+    tabOpenLink,
+    readText,
+    Clipboard,
+    Hints,
+    Visual,
+    Normal,
+    RUNTIME,
+    Front,
+    Insert,
+} = api
+
+// --------------------
+// | General settings |
+// --------------------
+settings.showModeStatus = true;
+
+// When total of opened tabs exceeds the number, Omnibar will be used for choosing tabs.
+settings.tabsThreshold = 0;
+
+// Improve scrolling
+settings.scrollStepSize = 120;
+settings.modeAfterYank = 'Normal';
+
 // All custom mappings will start with this key.
 settings.leader = ' ';
 
 // Ignore specific input fields when in insert mode
-settings.ignoredFrameProps = [
-    /.*mail\.google\.com.*#compose/, // Gmail compose window
-    /.*teams\.microsoft\.com.*/,    // Microsoft Teams
-];
-
-// Improve scrolling
-settings.smoothScroll = true;
-settings.scrollStepSize = 120;
+// settings.ignoredFrameProps = [
+//     /.*mail\.google\.com.*#compose/, // Gmail compose window
+//     /.*teams\.microsoft\.com.*/,    // Microsoft Teams
+// ];
 
 // Align hints to the left of links for better readability
 settings.hintAlign = "left";
 
-// Don't let the omnibar get too long
-settings.omnibarMaxResults = 10;
 
-
+// -----------------------
+// | Settings(with APIs) |
+// -----------------------
+// Hints.setCharacters('asdfgyuiopqwertnmzxcvb');
 // ---------------------------------------------------------------
 // | 02_theme.js - A clean theme based on the Nord color palette |
 // ---------------------------------------------------------------
@@ -463,9 +496,9 @@ settings.theme = `
 `;
 
 
-// ----------------------------------------
-// | 03_search.js - Custom search engines |
-// ----------------------------------------
+// ########################################
+// # 03_search.js - Custom search engines #
+// ########################################
 
 // Remove defaults we don't use
 // api.removeSearchAlias('b'); // Baidu
@@ -483,6 +516,28 @@ settings.theme = `
 // api.addSearchAlias('tr', 'Google Translate', 'https://translate.google.com/?sl=auto&tl=en&text=');
 
 
+// ---- Search Engines -----
+// removeSearchAlias('b', 's');
+// removeSearchAlias('d', 's');
+// removeSearchAlias('g', 's');
+// removeSearchAlias('h', 's');
+// removeSearchAlias('w', 's');
+// removeSearchAlias('y', 's');
+// removeSearchAlias('s', 's');
+
+// addSearchAlias('ama', 'amazon', 'https://www.amazon.com/s?k=', 's');
+// addSearchAlias('ap', 'arch pkg', 'https://www.archlinux.org/packages/?sort=&q=', 's');
+// addSearchAlias('aur', 'aur', 'https://aur.archlinux.org/packages/?O=0&SeB=nd&K=', 's');
+// addSearchAlias('aw', 'arch wiki', 'https://wiki.archlinux.org/index.php?title=Special:Search&search=', 's');
+// addSearchAlias('d',  'ddg', 'https://duckduckgo.com/?q=', 's');
+// addSearchAlias('dh', 'docker', 'https://hub.docker.com/search?type=image&q=', 's');
+// addSearchAlias('fh', 'flathub', 'https://flathub.org/apps/search/', 's');
+// addSearchAlias('gh', 'github', 'https://github.com/search?q=', 's');
+// addSearchAlias('pdb', 'proton', 'https://www.protondb.com/search?q=', 's');
+// addSearchAlias('r', 'reddit', 'https://libreddit.spike.codes/r/', 's');
+// addSearchAlias('st', 'steam', 'https://store.steampowered.com/search/?term=', 's');
+// addSearchAlias('wiki', 'wikipedia', 'https://en.wikipedia.org/wiki/Special:Search/', 's');
+// addSearchAlias('y', 'yt', 'https://invidious.snopyta.org/search?q=', 's');
 // -------------------------------------------------------
 // | 04_mappings.js - Powerful, general-purpose mappings |
 // -------------------------------------------------------
