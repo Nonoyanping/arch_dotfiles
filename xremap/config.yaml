@@ -1,5 +1,3 @@
-# ~/.config/xremap/config.yml
-
 # The `modmap` section is for redefining modifier keys or creating tap-hold behaviors.
 # This is the equivalent of keyd's `overload` function.
 modmap:

@@ -1,4 +1,7 @@
-### KeyMaps
+## tmux list-keys
+
+#### Copymode
+
 bind-key    -T copy-mode    Escape                 send-keys -X cancel
 bind-key    -T copy-mode    Space                  send-keys -X page-down
 bind-key    -T copy-mode    ,                      send-keys -X jump-reverse
@@ -124,14 +127,14 @@ bind-key    -T copy-mode-vi o                      send-keys -X other-end
 bind-key    -T copy-mode-vi q                      send-keys -X cancel
 bind-key    -T copy-mode-vi r                      send-keys -X refresh-from-pane
 bind-key    -T copy-mode-vi t                      command-prompt -1 -p "(jump to forward)" { send-keys -X jump-to-forward "%%" }
-bind-key    -T copy-mode-vi v                      send-keys -X rectangle-toggle
+bind-key    -T copy-mode-vi v                      send-keys -X begin-selection
 bind-key    -T copy-mode-vi w                      send-keys -X next-word
+bind-key    -T copy-mode-vi y                      send-keys -X copy-selection
 bind-key    -T copy-mode-vi z                      send-keys -X scroll-middle
 bind-key    -T copy-mode-vi \{                     send-keys -X previous-paragraph
 bind-key    -T copy-mode-vi \}                     send-keys -X next-paragraph
 bind-key    -T copy-mode-vi MouseDown1Pane         select-pane
 bind-key    -T copy-mode-vi MouseDrag1Pane         select-pane \; send-keys -X begin-selection
-bind-key    -T copy-mode-vi MouseDragEnd1Pane      send-keys -X copy-pipe-and-cancel
 bind-key    -T copy-mode-vi WheelUpPane            select-pane \; send-keys -X -N 5 scroll-up
 bind-key    -T copy-mode-vi WheelDownPane          select-pane \; send-keys -X -N 5 scroll-down
 bind-key    -T copy-mode-vi DoubleClick1Pane       select-pane \; send-keys -X select-word \; run-shell -d 0.3 \; send-keys -X copy-pipe-and-cancel
@@ -158,6 +161,9 @@ bind-key    -T copy-mode-vi C-v                    send-keys -X rectangle-toggle
 bind-key    -T copy-mode-vi C-y                    send-keys -X scroll-up
 bind-key    -T copy-mode-vi C-Up                   send-keys -X scroll-up
 bind-key    -T copy-mode-vi C-Down                 send-keys -X scroll-down
+
+#### General
+
 bind-key    -T prefix       Space                  next-layout
 bind-key    -T prefix       !                      break-pane
 bind-key    -T prefix       \"                     split-window
@@ -203,19 +209,18 @@ bind-key    -T prefix       \\                     split-window -h -c "#{pane_cu
 bind-key    -T prefix       ]                      paste-buffer -p
 bind-key    -T prefix       c                      new-window
 bind-key    -T prefix       d                      detach-client
-bind-key    -T prefix       f                      command-prompt { find-window -Z "%%" }
+bind-key -r -T prefix       f                      run-shell "tmux neww ~/scripts/tmux-sessionizer"
 bind-key    -T prefix       i                      display-message
-bind-key    -T prefix       j                      previous-window
-bind-key    -T prefix       k                      next-window
 bind-key    -T prefix       l                      last-window
-bind-key    -T prefix       m                      select-pane -m
-bind-key    -T prefix       n                      new-window
+bind-key -r -T prefix       m                      resize-pane -Z
+bind-key    -T prefix       n                      command-prompt "new-session -s '%%'"
 bind-key    -T prefix       o                      select-pane -t :.+
 bind-key    -T prefix       p                      previous-window
 bind-key    -T prefix       q                      display-panes
-bind-key    -T prefix       r                      source-file /home/yanping/.config/tmux/tmux.conf \; display-message Reloaded!
+bind-key    -T prefix       r                      source-file /home/yanping/.config/tmux/tmux.conf \; display-message "Config Reloaded!"
 bind-key    -T prefix       s                      choose-tree -Zs
 bind-key    -T prefix       t                      clock-mode
+bind-key    -T prefix       v                      copy-mode
 bind-key    -T prefix       w                      choose-tree -Zw
 bind-key    -T prefix       x                      confirm-before -p "kill-pane #P? (y/n)" kill-pane
 bind-key    -T prefix       z                      resize-pane -Z
@@ -244,7 +249,11 @@ bind-key -r -T prefix       M-Down                 resize-pane -D 5
 bind-key -r -T prefix       M-Left                 resize-pane -L 5
 bind-key -r -T prefix       M-Right                resize-pane -R 5
 bind-key    -T prefix       C-a                    send-prefix
+bind-key    -T prefix       C-g                    display-popup -E -d "#{pane_current_path}" -h "90%" -w "90%" lazygit
+bind-key    -T prefix       C-m                    display-popup -E -h "95%" -w "95%" rmpc
 bind-key    -T prefix       C-o                    rotate-window
+bind-key    -T prefix       C-t                    display-popup -E -d "#{pane_current_path}" -h "80%" -w "80%" zsh
+bind-key    -T prefix       C-y                    display-popup -E -d "#{pane_current_path}" -h "90%" -w "90%" yazi
 bind-key    -T prefix       C-z                    suspend-client
 bind-key -r -T prefix       C-Up                   resize-pane -U
 bind-key -r -T prefix       C-Down                 resize-pane -D
@@ -267,7 +276,9 @@ bind-key    -T root         WheelUpStatus          previous-window
 bind-key    -T root         WheelDownStatus        next-window
 bind-key    -T root         DoubleClick1Pane       select-pane -t = \; if-shell -F "#{||:#{pane_in_mode},#{mouse_any_flag}}" { send-keys -M } { copy-mode -H ; send-keys -X select-word ; run-shell -d 0.3 ; send-keys -X copy-pipe-and-cancel }
 bind-key    -T root         TripleClick1Pane       select-pane -t = \; if-shell -F "#{||:#{pane_in_mode},#{mouse_any_flag}}" { send-keys -M } { copy-mode -H ; send-keys -X select-line ; run-shell -d 0.3 ; send-keys -X copy-pipe-and-cancel }
+bind-key    -T root         M-I                    previous-window
+bind-key    -T root         M-O                    next-window
 bind-key    -T root         M-MouseDown3Pane       display-menu -T "#[align=centre]#{pane_index} (#{pane_id})" -t = -x M -y M "#{?#{m/r:(copy|view)-mode,#{pane_mode}},Go To Top,}" < { send-keys -X history-top } "#{?#{m/r:(copy|view)-mode,#{pane_mode}},Go To Bottom,}" > { send-keys -X history-bottom } '' "#{?mouse_word,Search For #[underscore]#{=/9/...:mouse_word},}" C-r { if-shell -F "#{?#{m/r:(copy|view)-mode,#{pane_mode}},0,1}" "copy-mode -t=" ; send-keys -X -t = search-backward "#{q:mouse_word}" } "#{?mouse_word,Type #[underscore]#{=/9/...:mouse_word},}" C-y { copy-mode -q ; send-keys -l "#{q:mouse_word}" } "#{?mouse_word,Copy #[underscore]#{=/9/...:mouse_word},}" c { copy-mode -q ; set-buffer "#{q:mouse_word}" } "#{?mouse_line,Copy Line,}" l { copy-mode -q ; set-buffer "#{q:mouse_line}" } '' "#{?mouse_hyperlink,Type #[underscore]#{=/9/...:mouse_hyperlink},}" C-h { copy-mode -q ; send-keys -l "#{q:mouse_hyperlink}" } "#{?mouse_hyperlink,Copy #[underscore]#{=/9/...:mouse_hyperlink},}" h { copy-mode -q ; set-buffer "#{q:mouse_hyperlink}" } '' "Horizontal Split" h { split-window -h } "Vertical Split" v { split-window -v } '' "#{?#{>:#{window_panes},1},,-}Swap Up" u { swap-pane -U } "#{?#{>:#{window_panes},1},,-}Swap Down" d { swap-pane -D } "#{?pane_marked_set,,-}Swap Marked" s { swap-pane } '' Kill X { kill-pane } Respawn R { respawn-pane -k } "#{?pane_marked,Unmark,Mark}" m { select-pane -m } "#{?#{>:#{window_panes},1},,-}#{?window_zoomed_flag,Unzoom,Zoom}" z { resize-pane -Z }
 bind-key    -T root         M-MouseDown3Status     display-menu -T "#[align=centre]#{window_index}:#{window_name}" -t = -x W -y W "#{?#{>:#{session_windows},1},,-}Swap Left" l { swap-window -t :-1 } "#{?#{>:#{session_windows},1},,-}Swap Right" r { swap-window -t :+1 } "#{?pane_marked_set,,-}Swap Marked" s { swap-window } '' Kill X { kill-window } Respawn R { respawn-window -k } "#{?pane_marked,Unmark,Mark}" m { select-pane -m } Rename n { command-prompt -F -I "#W" { rename-window -t "#{window_id}" "%%" } } '' "New After" w { new-window -a } "New At End" W { new-window }
 bind-key    -T root         M-MouseDown3StatusLeft display-menu -T "#[align=centre]#{session_name}" -t = -x M -y W Next n { switch-client -n } Previous p { switch-client -p } '' Renumber N { move-window -r } Rename n { command-prompt -I "#S" { rename-session "%%" } } '' "New Session" s { new-session } "New Window" w { new-window }
-bind-key    -T root         C-o                    select-pane -t :.+
+bind-key    -T root         C-p                    send-keys pj Enter

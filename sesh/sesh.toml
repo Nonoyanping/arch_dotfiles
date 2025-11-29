@@ -1,0 +1,93 @@
+# ================================================
+# ENHANCED SESH CONFIGURATION
+# ================================================
+
+# Default session behavior
+[default_session]
+startup_command = "nvim"
+preview_command = "eza --all --git --icons --color=always {}"
+
+# Blacklist (exclude from results)
+blacklist = ["scratch", "temp", "test"]
+
+# Sort order
+sort_order = ["config", "tmux", "tmuxinator", "zoxide"]
+
+# ===== PERSONAL CONFIGS =====
+
+[[session]]
+name = "dotfiles 📁"
+path = "~/dotfiles"
+startup_command = "nvim ."
+preview_command = "eza --all --git --icons --tree --level=2 ~/dotfiles"
+
+[[session]]
+name = "zsh "
+path = "~/dotfiles/zsh"
+startup_command = "nvim .zshrc"
+preview_command = "bat --color=always ~/dotfiles/zsh/.zshrc"
+
+[[session]]
+name = "tmux "
+path = "~/dotfiles/tmux"
+startup_command = "nvim tmux.conf"
+preview_command = "bat --color=always ~/dotfiles/tmux/tmux.conf"
+
+[[session]]
+name = "nvim "
+path = "~/.config/nvim"
+startup_command = "nvim init.lua"
+preview_command = "eza --all --git --icons --tree --level=2 ~/.config/nvim"
+
+[[session]]
+name = "starship 󰑣"
+path = "~/dotfiles/starship"
+startup_command = "nvim starship.toml"
+preview_command = "bat --color=always ~/dotfiles/starship/starship.toml"
+
+[[session]]
+name = "sesh 󱐋"
+path = "~/.config/sesh"
+startup_command = "nvim sesh.toml"
+preview_command = "bat --color=always ~/.config/sesh/sesh.toml"
+
+# ===== WORK DIRECTORIES =====
+
+[[session]]
+name = "projects 🚀"
+path = "~/projects"
+startup_command = "eza --all --icons --tree --level=1"
+
+[[session]]
+name = "downloads 📥"
+path = "~/Downloads"
+disable_startup_command = true
+
+# ===== EXAMPLE: FULL-STACK PROJECT WITH MULTIPLE WINDOWS =====
+
+[[session]]
+name = "webapp 🌐"
+path = "~/projects/webapp"
+windows = ["editor", "frontend", "backend", "database", "git"]
+
+[[window]]
+name = "editor"
+startup_script = "nvim ."
+
+[[window]]
+name = "frontend"
+path = "~/projects/webapp/frontend"
+startup_script = "npm run dev"
+
+[[window]]
+name = "backend"
+path = "~/projects/webapp/backend"
+startup_script = "python manage.py runserver"
+
+[[window]]
+name = "database"
+startup_script = "lazydocker"
+
+[[window]]
+name = "git"
+startup_script = "lazygit"

@@ -1,0 +1,205 @@
+# Clean & Modern Starship Prompt - Fixed Version
+# Two-line layout, no time, vim-mode support, proper alignment
+
+add_newline = true
+
+# Two-line format: info line + prompt line
+format = """
+[](fg:{{colors.primary.default.hex}})\
+$os\
+$username\
+[](bg:{{colors.primary_container.default.hex}} fg:{{colors.primary.default.hex}})\
+$directory\
+[](fg:{{colors.primary_container.default.hex}} bg:{{colors.secondary_container.default.hex}})\
+$git_branch\
+$git_status\
+[](fg:{{colors.secondary_container.default.hex}} bg:{{colors.tertiary_container.default.hex}})\
+$nodejs\
+$python\
+$rust\
+$golang\
+$java\
+$docker_context\
+[](fg:{{colors.tertiary_container.default.hex}})\
+$cmd_duration\
+$line_break\
+$character"""
+
+# ===== OS ICON =====
+[os]
+disabled = false
+style = "bg:{{colors.primary.default.hex}} fg:{{colors.on_primary.default.hex}}"
+format = "[ $symbol]($style)"
+
+[os.symbols]
+Arch = "󰣇"
+Ubuntu = ""
+Debian = ""
+Fedora = ""
+Macos = ""
+Windows = "󰍲"
+Linux = "󰌽"
+
+# ===== USERNAME =====
+[username]
+show_always = true
+style_user = "bg:{{colors.primary.default.hex}} fg:{{colors.on_primary.default.hex}}"
+style_root = "bg:{{colors.error.default.hex}} fg:{{colors.on_error.default.hex}}"
+format = "[ $user ]($style)"
+
+# ===== DIRECTORY =====
+[directory]
+style = "bg:{{colors.primary_container.default.hex}} fg:{{colors.on_primary_container.default.hex}}"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+truncate_to_repo = true
+home_symbol = "~"
+read_only = " 󰌾"
+
+[directory.substitutions]
+"Desktop" = "󰚝 Desktop"
+"Documents" = "󰈙 Documents"
+"Downloads" = "󰉍 Downloads"
+"Music" = "󰎈 Music"
+"Pictures" = "󰉏 Pictures"
+"Videos" = "󰕧 Videos"
+"Projects" = "󱌢 Projects"
+"Code" = "󰲋 Code"
+".config" = "󱁿 .config"
+
+# ===== GIT BRANCH =====
+[git_branch]
+symbol = ""
+style = "bg:{{colors.secondary_container.default.hex}} fg:{{colors.on_secondary_container.default.hex}}"
+format = "[ $symbol $branch ]($style)"
+truncation_length = 20
+truncation_symbol = "…"
+
+# ===== GIT STATUS =====
+[git_status]
+style = "bg:{{colors.secondary_container.default.hex}} fg:{{colors.on_secondary_container.default.hex}}"
+format = '([$all_status$ahead_behind ]($style))'
+conflicted = "󰞇 "
+ahead = "⇡${count} "
+behind = "⇣${count} "
+diverged = "⇕${ahead_count}⇣${behind_count} "
+untracked = "?${count} "
+stashed = "$${count} "
+modified = "!${count} "
+staged = "+${count} "
+renamed = "»${count} "
+deleted = "✘${count} "
+
+# ===== GIT STATE =====
+[git_state]
+format = '[\($state( $progress_current/$progress_total)\)](bold fg:{{colors.error.default.hex}}) '
+cherry_pick = "🍒 PICKING"
+rebase = " REBASING"
+merge = " MERGING"
+revert = " REVERTING"
+bisect = " BISECTING"
+am = " AM"
+am_or_rebase = " AM/REBASE"
+
+# ===== LANGUAGE VERSIONS =====
+[nodejs]
+symbol = ""
+style = "bg:{{colors.tertiary_container.default.hex}} fg:{{colors.on_tertiary_container.default.hex}}"
+format = '[ $symbol $version ]($style)'
+detect_extensions = []
+detect_files = ["package.json", ".node-version"]
+
+[python]
+symbol = ""
+style = "bg:{{colors.tertiary_container.default.hex}} fg:{{colors.on_tertiary_container.default.hex}}"
+format = '[ $symbol $version ]($style)'
+detect_extensions = []
+detect_files = [
+    ".python-version",
+    "Pipfile",
+    "pyproject.toml",
+    "requirements.txt",
+]
+
+[rust]
+symbol = ""
+style = "bg:{{colors.tertiary_container.default.hex}} fg:{{colors.on_tertiary_container.default.hex}}"
+format = '[ $symbol $version ]($style)'
+detect_extensions = []
+detect_files = ["Cargo.toml"]
+
+[golang]
+symbol = ""
+style = "bg:{{colors.tertiary_container.default.hex}} fg:{{colors.on_tertiary_container.default.hex}}"
+format = '[ $symbol $version ]($style)'
+detect_extensions = []
+detect_files = ["go.mod", "go.sum"]
+
+[java]
+symbol = ""
+style = "bg:{{colors.tertiary_container.default.hex}} fg:{{colors.on_tertiary_container.default.hex}}"
+format = '[ $symbol $version ]($style)'
+detect_extensions = []
+detect_files = ["pom.xml", "build.gradle"]
+
+[docker_context]
+symbol = ""
+style = "bg:{{colors.tertiary_container.default.hex}} fg:{{colors.on_tertiary_container.default.hex}}"
+format = '[ $symbol $context ]($style)'
+only_with_files = true
+
+# ===== COMMAND DURATION =====
+[cmd_duration]
+min_time = 500
+show_milliseconds = false
+format = '[ 󱎫 $duration]($style)'
+style = "fg:{{colors.tertiary.default.hex}}"
+
+# ===== PROMPT CHARACTER (VIM-MODE READY) =====
+[character]
+success_symbol = "[❯](bold fg:{{colors.primary.default.hex}})[❯](bold fg:{{colors.secondary.default.hex}})[❯](bold fg:{{colors.tertiary.default.hex}})"
+error_symbol = "[❯](bold fg:{{colors.error.default.hex}})[❯](bold fg:{{colors.error.default.hex}})[❯](bold fg:{{colors.error.default.hex}})"
+vimcmd_symbol = "[❮](bold fg:{{colors.tertiary.default.hex}})[❮](bold fg:{{colors.secondary.default.hex}})[❮](bold fg:{{colors.primary.default.hex}})"
+vimcmd_visual_symbol = "[V](bold fg:{{colors.tertiary_container.default.hex}})[❮](bold fg:{{colors.secondary_container.default.hex}})[❮](bold fg:{{colors.primary_container.default.hex}})"
+vimcmd_replace_symbol = "[R](bold fg:{{colors.error.default.hex}})[❮](bold fg:{{colors.error.default.hex}})[❮](bold fg:{{colors.error.default.hex}})"
+vimcmd_replace_one_symbol = "[r](bold fg:{{colors.error.default.hex}})[❮](bold fg:{{colors.error.default.hex}})[❮](bold fg:{{colors.error.default.hex}})"
+
+# ===== LINE BREAK =====
+[line_break]
+disabled = false
+
+# ===== DISABLED MODULES =====
+[time]
+disabled = true
+
+[package]
+disabled = true
+
+[status]
+disabled = false
+format = '[$symbol$status ]($style)'
+symbol = "✘ "
+style = "bold fg:{{colors.error.default.hex}}"
+map_symbol = true
+
+[git_commit]
+disabled = true
+
+[hostname]
+disabled = true
+
+[memory_usage]
+disabled = true
+
+[aws]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[kubernetes]
+disabled = true
+
+[battery]
+disabled = true

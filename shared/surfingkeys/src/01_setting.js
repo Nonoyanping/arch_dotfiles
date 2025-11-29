@@ -1,17 +1,19 @@
 // ###################################
 // # 01_settings.js - Core behaviors #
 // ###################################
+
+// INFO: Heard about Use Browser APIs is Faster than RUNTIME
 const {
     aceVimMap,
-    mapkey: mapkey_,
+    mapkey,
     imap,
     iunmap,
-    imapkey: imapkey_,
+    imapkey,
     getClickableElements,
     vmap,
-    vmapkey: vmapkey_,
-    map: nmap,
-    unmap: nunmap,
+    vmapkey,
+    map,
+    unmap,
     cmap,
     addSearchAlias,
     removeSearchAlias,
@@ -32,24 +34,23 @@ const {
 settings.showModeStatus = true;
 
 // When total of opened tabs exceeds the number, Omnibar will be used for choosing tabs.
-settings.tabsThreshold = 0;
+settings.tabsThreshold = 5;
 
 // Improve scrolling
 settings.scrollStepSize = 120;
 settings.modeAfterYank = 'Normal';
 
 // All custom mappings will start with this key.
-settings.leader = ' ';
+// settings.leader = ' ';
+
+// Align hints to the left of links for better readability
+settings.hintAlign = "center";
 
 // Ignore specific input fields when in insert mode
 // settings.ignoredFrameProps = [
 //     /.*mail\.google\.com.*#compose/, // Gmail compose window
 //     /.*teams\.microsoft\.com.*/,    // Microsoft Teams
 // ];
-
-// Align hints to the left of links for better readability
-settings.hintAlign = "left";
-
 
 // -----------------------
 // | Settings(with APIs) |

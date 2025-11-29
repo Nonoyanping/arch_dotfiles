@@ -1,0 +1,257 @@
+# INFO: Some interest glyphs
+# Component Separator: ▒ |  
+# Character: ❯❯❯ | 🞈 |   |  
+# OS: 󰣇 (Arch), 󰍲 (Windows), 󰌽 (Linux)
+
+# Pipes ╰─ ╭─
+# Powerline symbols                                     
+# Wedges 🭧🭒 🭣🭧🭓
+# Random noise 🬖🬥🬔🬗
+# Cool stuff 󰜥   
+
+add_newline = true
+
+format = """
+$os\
+$directory\
+$git_branch\
+$git_status\
+$python\
+$lua\
+$nodejs\
+$golang\
+$haskell\
+$rust\
+$ruby\
+$java\
+$docker_context\
+$package\
+$cmd_duration\
+$line_break\
+$character
+"""
+
+# ===== SEMANTIC COLOR PALETTE =====
+palette = 'matugen'
+
+[palettes.matugen]
+# Backgrounds (for module boxes)
+bg_primary = '{{colors.primary.default.hex}}'
+bg_primary_container = '{{colors.primary_container.default.hex}}'
+bg_secondary = '{{colors.secondary.default.hex}}'
+bg_secondary_container = '{{colors.secondary_container.default.hex}}'
+bg_tertiary = '{{colors.tertiary.default.hex}}'
+bg_tertiary_container = '{{colors.tertiary_container.default.hex}}'
+bg_surface = '{{colors.surface.default.hex}}'
+bg_surface_dim = '{{colors.surface_dim.default.hex}}'
+bg_surface_container = '{{colors.surface_container.default.hex}}'
+bg_surface_variant = '{{colors.surface_variant.default.hex}}'
+
+# Foregrounds (text on backgrounds) - ENSURES READABLE TEXT!
+# fg_on_primary = '#00ffff'
+fg_on_primary = '{{colors.on_primary.default.hex}}'
+fg_on_primary_container = '{{colors.on_primary_container.default.hex}}'
+fg_on_secondary = '{{colors.on_secondary.default.hex}}'
+fg_on_secondary_container = '{{colors.on_secondary_container.default.hex}}'
+fg_on_tertiary = '{{colors.on_tertiary.default.hex}}'
+fg_on_tertiary_container = '{{colors.on_tertiary_container.default.hex}}'
+fg_on_surface = '{{colors.on_surface.default.hex}}'
+fg_on_surface_variant = '{{colors.on_surface_variant.default.hex}}'
+fg_on_surface_container = '{{colors.on_surface_variant.default.hex}}'
+
+# Accents (for text without background)
+accent_primary = '{{colors.primary.default.hex}}'
+accent_secondary = '{{colors.secondary.default.hex}}'
+accent_tertiary = '{{colors.tertiary.default.hex}}'
+
+# Status colors
+error = '{{colors.error.default.hex}}'
+error_container = '{{colors.error_container.default.hex}}'
+on_error = '{{colors.on_error.default.hex}}'
+success = '{{colors.tertiary.default.hex}}'
+warning = '{{colors.tertiary_container.default.hex}}'
+
+# Special colors
+dim_primary = '{{colors.primary_fixed_dim.default.hex}}'
+dim_surface = '{{colors.surface_container.default.hex}}'
+
+# ===== OS ICON =====
+[os]
+format = "[$symbol](fg:fg_on_surface_variant bold) "
+disabled = false
+
+[os.symbols]
+Arch = "󰣇"
+Windows = "󰍲"
+Linux = "󰌽"
+
+# ===== DIRECTORY =====
+[directory]
+style = "fg:fg_on_primary bg:bg_primary bold"
+format = "[](fg:bg_primary)[$path]($style)[](fg:bg_primary) "
+truncation_length = 5
+truncation_symbol = "…/"
+truncate_to_repo = true
+home_symbol = "󰜥"
+read_only = " 󰌾"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = "󰉍 "
+"Music" = "󰎈 "
+"Pictures" = "󰉏 "
+"Videos" = "󰕧 "
+"Code" = "󰲋 "
+".config" = "󱁿 "
+
+# ===== GIT BRANCH =====
+[git_branch]
+symbol = "󰘬"
+style = "fg:fg_on_secondary_container bg:bg_secondary_container"
+format = "[](fg:bg_secondary_container)[$symbol $branch]($style)[](fg:bg_secondary_container) "
+truncation_length = 20
+truncation_symbol = "…"
+
+# ===== GIT STATUS =====
+[git_status]
+style = "fg:fg_on_secondary_container bg:bg_secondary_container"
+format = '([](fg:bg_secondary_container)[$all_status$ahead_behind]($style)[](fg:bg_secondary_container) )'
+conflicted = "󰞇"
+ahead = " ⇡${count}"
+behind = " ⇣${count}"
+diverged = " ⇕${ahead_count}⇣${behind_count}"
+untracked = " ?${count}"
+stashed = " $ ${count}"
+modified = " !${count}"
+staged = " +${count}"
+renamed = " ${count}"
+deleted = " ${count}"
+
+# ===== GIT STATE =====
+[git_state]
+format = '[\($state( $progress_current/$progress_total)\)](fg:error bold) '
+cherry_pick = "🍒 PICKING"
+rebase = " REBASING"
+merge = " MERGING"
+bisect = " BISECTING"
+revert = " REVERTING"
+
+# ===== LANGUAGE MODULES =====
+[python]
+symbol = ""
+style = "fg:fg_on_tertiary_container bg:bg_tertiary_container"
+format = '[](fg:bg_tertiary_container)[ $symbol $version ]($style)'
+detect_extensions = []
+detect_files = [
+    ".python-version",
+    "Pipfile",
+    "pyproject.toml",
+    "requirements.txt",
+]
+
+[lua]
+symbol = ""
+style = "fg:fg_on_tertiary_container bg:bg_tertiary_container"
+format = '[](fg:bg_tertiary_container)[ $symbol $version ]($style)'
+
+[nodejs]
+symbol = ""
+style = "fg:fg_on_tertiary_container bg:bg_tertiary_container"
+format = '[](fg:bg_tertiary_container)[ $symbol $version ]($style)'
+detect_extensions = []
+detect_files = ["package.json", ".node-version"]
+
+[golang]
+symbol = ""
+style = "fg:fg_on_tertiary_container bg:bg_tertiary_container"
+format = '[](fg:bg_tertiary_container)[ $symbol $version ]($style)'
+detect_extensions = []
+detect_files = ["go.mod", "go.sum"]
+
+[haskell]
+symbol = ""
+style = "fg:fg_on_tertiary_container bg:bg_tertiary_container"
+format = '[](fg:bg_tertiary_container)[ $symbol $version ]($style)'
+
+[rust]
+symbol = ""
+style = "fg:fg_on_tertiary_container bg:bg_tertiary_container"
+format = '[](fg:bg_tertiary_container)[ $symbol $version ]($style)'
+detect_extensions = []
+detect_files = ["Cargo.toml"]
+
+[ruby]
+symbol = ""
+style = "fg:fg_on_tertiary_container bg:bg_tertiary_container"
+format = '[](fg:bg_tertiary_container)[ $symbol $version ]($style)'
+
+[java]
+symbol = ""
+style = "fg:fg_on_tertiary_container bg:bg_tertiary_container"
+format = '[](fg:bg_tertiary_container)[ $symbol $version ]($style)'
+detect_extensions = []
+detect_files = ["pom.xml", "build.gradle"]
+
+[docker_context]
+symbol = ""
+style = "fg:fg_on_tertiary_container bg:bg_tertiary_container"
+format = '[](fg:bg_tertiary_container)[ $symbol $context ]($style)'
+only_with_files = true
+
+[package]
+symbol = "󰏗"
+style = "fg:fg_on_tertiary_container bg:bg_tertiary_container"
+format = '[](fg:bg_tertiary_container)[ $symbol $version ]($style)'
+
+# ===== COMMAND DURATION =====
+[cmd_duration]
+min_time = 500
+show_milliseconds = false
+format = '[ 󱎫 $duration](fg:accent_tertiary) '
+
+# ===== PROMPT CHARACTER =====
+[character]
+success_symbol = "[](fg:accent_primary bold)"
+error_symbol = "[](fg:error bold)"
+vimcmd_symbol = "[🞈](fg:accent_tertiary bold)"
+vimcmd_visual_symbol = "[V](fg:bg_tertiary_container bold)"
+vimcmd_replace_symbol = "[R](fg:error bold)"
+
+# ===== LINE BREAK =====
+[line_break]
+disabled = false
+
+# ===== STATUS =====
+[status]
+disabled = false
+format = '[$symbol$status ](fg:error bold)'
+symbol = "✘ "
+map_symbol = true
+
+# ===== DISABLED MODULES =====
+[time]
+disabled = true
+
+[hostname]
+disabled = true
+
+[username]
+disabled = true
+
+[git_commit]
+disabled = true
+
+[memory_usage]
+disabled = true
+
+[aws]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[kubernetes]
+disabled = true
+
+[battery]
+disabled = true

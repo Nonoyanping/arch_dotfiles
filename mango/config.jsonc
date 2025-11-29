@@ -1,0 +1,232 @@
+[
+    {
+        "height": 40,
+        "spacing": 5,
+        "layer": "top",
+        "position": "top",
+        "modules-left": [
+            "group/Utilities",
+            "group/workspaces",
+            "mpris"
+        ],
+        "modules-center": [
+            "group/windows"
+        ],
+        "modules-right": [
+            "group/cpuram",
+            "group/brightvol",
+            "group/system"
+        ],
+        // --- Brackets & split ---
+        "custom/openbracket": {
+            "format": "[",
+            "tooltip": false
+        },
+        "custom/closebracket": {
+            "format": "]",
+            "tooltip": false
+        },
+        "custom/split": {
+            "format": " | ",
+            "tooltip": false
+        },
+        // --- Utilities: Rofi, power, theme ---
+        "group/Utilities": {
+            "orientation": "horizontal",
+            "modules": [
+                "custom/openbracket",
+                "custom/arch",
+                "idle_inhibitor",
+                "custom/split",
+                "custom/powerprofile",
+                "custom/split",
+                "custom/themeswitcher",
+                "custom/closebracket"
+            ]
+        },
+        "custom/arch": {
+            "format": "󰣇",
+            "tooltip": false,
+            "on-click": "rofi -show drun"
+        },
+        "custom/powerprofile": {
+            "exec": "./waybar/scripts/powerprofile.sh display",
+            "on-click": "~/.config/waybar/scripts/powerprofile.sh toggle",
+            "interval": 5,
+            "tooltip": true,
+            "exec-tooltip": "~/.config/waybar/scripts/powerprofile.sh tooltip",
+            "tooltip-format": "{}"
+        },
+        "custom/themeswitcher": {
+            "format": "",
+            "tooltip": true,
+            "tooltip-format": "Click: next • Right: random • Middle: list",
+            "on-click": "~/.config/waybar/scripts/theme-switcher.sh next",
+            "on-click-right": "~/.config/waybar/scripts/theme-switcher.sh random",
+            "on-click-middle": "~/.config/waybar/scripts/theme-switcher.sh list"
+        },
+        // --- Workspaces (static for now — MangoWC has no IPC yet) ---
+        "group/workspaces": {
+            "orientation": "horizontal",
+            "modules": [
+                "custom/openbracket",
+                "custom/static_workspaces",
+                "custom/closebracket"
+            ]
+        },
+        "custom/static_workspaces": {
+            "exec": "echo '1 2 3 4 5'",
+            "format": "{}",
+            "interval": 0,
+            "tooltip": false
+            // TODO: Replace with dynamic workspaces when MangoWC supports IPC
+        },
+        // --- Window title (via foreign toplevel) ---
+        "group/windows": {
+            "orientation": "horizontal",
+            "modules": [
+                "custom/openbracket",
+                "sway/window",
+                "custom/closebracket"
+            ]
+        },
+        "sway/window": {
+            "format": "{title}",
+            "max-length": 30,
+            "min-length": 0,
+            "on-click": "rofi -show window"
+        },
+        // --- CPU/RAM ---
+        "group/cpuram": {
+            "orientation": "horizontal",
+            "modules": [
+                "custom/openbracket",
+                "cpu",
+                "custom/split",
+                "memory",
+                "custom/closebracket"
+            ]
+        },
+        "cpu": {
+            "format": "CPU:{usage}%",
+            "tooltip": false,
+            "interval": 2,
+            "on-click": "kitty -e btop"
+        },
+        "memory": {
+            "format": "RAM:{used:0.1f}G/{total:0.1f}G",
+            "tooltip": false,
+            "interval": 2,
+            "on-click": "kitty -e btop"
+        },
+        // --- Brightness & Volume ---
+        "group/brightvol": {
+            "orientation": "horizontal",
+            "modules": [
+                "custom/openbracket",
+                "backlight",
+                "custom/split",
+                "wireplumber",
+                "custom/closebracket"
+            ]
+        },
+        "wireplumber": {
+            "scroll-step": 5,
+            "format": "{icon} {volume}%",
+            "format-muted": "🔇 {icon}",
+            "format-icons": {
+                "default": [
+                    "🔈",
+                    "🔉",
+                    "🔊"
+                ]
+            },
+            "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+            "on-click-right": "pavucontrol"
+        },
+        "backlight": {
+            "device": "intel_backlight", // try 'amdgpu_bl0' or 'acpi_video0' if needed
+            "format": "🔆 {percent}%",
+            "on-scroll-up": "brightnessctl set +5%",
+            "on-scroll-down": "brightnessctl set 5%-",
+            "on-click": "rofi -show brightness"
+        },
+        // --- System: time, net, BT, bat, notif ---
+        "group/system": {
+            "orientation": "horizontal",
+            "modules": [
+                "custom/openbracket",
+                "clock",
+                "custom/split",
+                "network",
+                "custom/split",
+                "custom/bluetooth",
+                "custom/split",
+                "custom/clipboard",
+                "custom/split",
+                "battery",
+                "custom/split",
+                "custom/swaync",
+                "custom/closebracket"
+            ]
+        },
+        "clock": {
+            "format": "🕒 {:%H:%M}",
+            "tooltip-format": "<big>{:%Y-%m-%d %A}</big>\n<small>{calendar}</small>",
+            "on-click": "rofi -show calendar"
+        },
+        "custom/clipboard": {
+            "format": "📋",
+            "tooltip": false,
+            "on-click": "~/.config/waybar/scripts/clipboard_menu.sh"
+        },
+        "battery": {
+            "states": {
+                "warning": 25,
+                "critical": 10
+            },
+            "format": "{icon} {capacity}%",
+            "format-charging": "⚡ {capacity}%",
+            "format-plugged": "🔌 {capacity}%",
+            "format-icons": [
+                "🪫",
+                "🔋",
+                "🔋",
+                "🔋",
+                "🔋"
+            ],
+            "on-click": "rofi -show powermenu"
+        },
+        "idle_inhibitor": {
+            "format": "{icon}",
+            "format-icons": {
+                "activated": "🕒",
+                "deactivated": "⏹️"
+            },
+            "on-click": "swayidle toggle"
+        },
+        "custom/swaync": {
+            "format": "🔔",
+            "on-click": "swaync-client -t -sw",
+            "tooltip": false
+        },
+        "network": {
+            // Auto-detect interface
+            "format-wifi": "📡 {signalStrength}%",
+            "format-ethernet": "🖧 LAN",
+            "format-disconnected": "📵",
+            "tooltip-format": "{ifname}: {ipaddr}\nSSID: {ssid} ({signalStrength}%)",
+            "on-click": "rofi -show wifi"
+        },
+        "custom/bluetooth": {
+            "exec": "~/.config/waybar/scripts/bluetooth_status.sh",
+            "interval": 5,
+            "on-click": "blueman-manager"
+        },
+        // Optional: tray (if you use status-notifier items)
+        "tray": {
+            "icon-size": 16,
+            "spacing": 10
+        }
+    }
+]

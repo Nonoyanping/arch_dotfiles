@@ -1,0 +1,118 @@
+#|
+Ultimate Kanata Config for Lofree Flow Lite 84 (Linux)
+- Caps Lock: tap=Esc, hold=Ctrl
+- Esc: tap=Esc, double-tap=live reload
+- Space: tap=Space, hold=Win, timeout=Nav layer
+- Enter: tap=Enter, hold=Alt
+- Right Alt: tap=Alt, double-tap=next fcitx5 input method
+- Shift+Shift+H/S: temporary Nav/Symbols layer
+- French Unicode: é, à, ç, « », etc.
+|#
+
+(defcfg
+  ;; Only your Lofree Flow Lite
+  linux-dev /dev/input/by-id/usb-CX_2.4G_Wireless_Receiver-event-kbd
+
+  ;; Enable unmapped keys for tap-hold logic
+  process-unmapped-keys yes
+
+  ;; Smoother tap-hold
+  concurrent-tap-hold yes
+
+  ;; Enable fcitx5 and cmd
+  danger-enable-cmd yes
+)
+
+
+;; ┌──────────────────────────────────────────────┐
+;; │   Physical key layout (Lofree Flow Lite 84)  │
+;; └──────────────────────────────────────────────┘
+(defsrc
+  esc   f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12   prnt   ins   del
+  grv   1     2     3     4     5     6     7     8     9     0     -     =     bspc         home
+  tab   q     w     e     r     t     y     u     i     o     p     [     ]     \            end
+  caps  a     s     d     f     g     h     j     k     l     ;     '     ret                pgup
+  lsft  z     x     c     v     b     n     m     ,     .     /     rsft  up                 pgdn
+  lctl  lalt  lmet              spc               rmet        ralt  left  down  right
+)
+
+;; ┌──────────────────────────────────────────────┐
+;; │     Reusable aliases (keep layers clean)     │
+;; └──────────────────────────────────────────────┘
+(defalias
+  ;; ── Esc: tap=Esc, double-tap=live reload ────────────────────────────────
+  esc-reload (tap-dance 250 (esc lrld))
+
+  ;; ── Caps Lock: tap=Esc, hold=Ctrl ───────────────────────────────────────
+  caps-ctrl (tap-hold 200 200 esc lctl)
+
+  ;; ── Space: tap=Space, hold=Win, timeout=Nav layer ───────────────────────
+  ;; space-win-vim (tap-hold-release-timeout 200 200 spc lmet (layer-while-held vim-nav))
+  space-win-vim (tap-hold-release-timeout 200 200 spc lmet (layer-switch vim-nav))
+
+  ;; ── Enter: tap=Enter, hold=Alt ──────────────────────────────────────────
+  enter-alt (tap-hold 200 200 ret lalt) ;; Maybe also have tab-alt
+
+  ;; ── Right Alt: tap=Alt, double-tap=next fcitx5 input method ─────────────
+  ;; INFO: This is not the correct way to switch input methods, and it don't work
+  ;; fcitx-next (cmd sh -c "fcitx5-remote -n")
+  ;; Or switch to specific profile (if you prefer)
+  ;; fcitx-fr (cmd sh -c "fcitx5-remote -s 'French'")
+
+  ;; TODO: Still hard to type, maybe should change to something else
+  ;;ralt-im (tap-dance 250 (ralt @fcitx-next)) ;; maybe use tab?
+)
+
+;; ── Vim Motions (as macros using standard shortcuts) ───────────────────────
+(defalias
+  vim-h left
+  vim-j down
+  vim-k up
+  vim-l right
+  vim-w C-right
+  vim-b C-left
+)
+
+;; ┌──────────────────────────────────────────────┐
+;; │             Base Layer (default)             │
+;; └──────────────────────────────────────────────┘
+(deflayer base
+  @esc-reload f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  prnt ins del  ;; 16
+  grv         1    2    3    4    5    6    7    8    9    0    -    =    bspc     home ;; 15
+  tab         q    w    e    r    t    y    u    i    o    p    [    ]    \        end  ;; 15
+  @caps-ctrl  a    s    d    f    g    h    j    k    l    ;    '    @enter-alt    pgup ;; 14
+  lsft        z    x    c    v    b    n    m    ,    .    /    rsft up            pgdn ;; 14
+  lctl        lalt lmet           @space-win-vim     rmet  ralt left down right      ;; 9
+)
+
+;; ┌──────────────────────────────────────────────┐
+;; │ Vim Mode Layer                               │
+;; │ Activated by: Shift+Shift+H                  │
+;; │ Esc = return to base                         │
+;; └──────────────────────────────────────────────┘
+(deflayer vim-nav
+  (layer-switch base) _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ ;; 16
+  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ ;; 15
+  _ _ @vim-w _ _ _ _ _ _ _ _ _ _ _ _ ;; 15
+  _ _ _ _ _ _ @vim-h @vim-j @vim-k @vim-l _ _ _ _ ;; 15
+  _ _ _ _ _ @vim-b _ _ _ _ _ _ _ _ ;; 14
+  _ _ _ _ _ _ _ _ _ ;; 9
+)
+
+;; ┌──────────────────────────────────────────────┐
+;; │ Global Chords: Shift+Shift+Key               │
+;; └──────────────────────────────────────────────┘
+(defchordsv2
+  (lsft lsft h) (layer-while-held vim-nav)  200 first-release ()
+  ; (lsft lsft s) (layer-while-held sym)  200 first-release ()
+)
+
+
+;; TODO: Unprocessed Idea
+;; (defvirtualkeys
+;;   layer-select (layer-while-held layer-select-mode)
+;; )
+;; (defchordsv2
+;;   (lsft rsft) @enter-layer-select 300 first-release (base nav sym mouse)
+;;   ;; This chord activates ONLY if you're NOT in layer-select-mode
+;; )

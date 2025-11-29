@@ -1,0 +1,26 @@
+@import "color.css";
+
+#waybar {
+    background: @surface;
+    color: @onSurface;
+    font-family: "JetBrains Mono", monospace;
+}
+
+#workspaces button {
+    background: transparent;
+    color: @onSurfaceVariant;
+}
+
+#workspaces button.focused {
+    background: @primaryContainer;
+    color: @onPrimaryContainer;
+}
+
+#clock {
+    background: @surfaceVariant;
+    color: @onSurfaceVariant;
+}
+
+#battery.critical {
+    color: @error;
+}

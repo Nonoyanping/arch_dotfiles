@@ -23,6 +23,7 @@ alias kconf="cd $XDG_CONFIG_HOME/kitty/ && nvim ./kitty.conf"
 alias gconf="cd $XDG_CONFIG_HOME/ghostty/ && nvim ./config"
 alias tconf="cd $XDG_CONFIG_HOME/tmux/ && nvim ./tmux.conf"
 alias nconf="cd $XDG_CONFIG_HOME/nvim/ && nvim ./init.lua"
+alias niconf="cd $XDG_CONFIG_HOME/niri/ && nvim ./config.kdl"
 
 # TODO: Optimize workflow with fzf
 # alias pj="cd $HOME/404/projects"
@@ -32,7 +33,7 @@ alias ff="fastfetch"
 alias ibusr="ibus restart"
 alias l='eza -al --icons'
 alias lt='eza -T --icons'
-alias t="tree"
+# alias t="tree"
 alias lg="lazygit"
 alias ldc="lazydocker"
 alias h="tldr"
@@ -43,3 +44,6 @@ alias see="kitten icat"
 alias br="sudo systemctl restart bluetooth.service"
 
 # alias sleep=""
+alias q="paru -Ss"
+alias i="paru -S --needed"
+alias f="paru -Qs | fzf"

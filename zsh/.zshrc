@@ -1,68 +1,51 @@
-# ===== 1. Set ZSH Theme (BEFORE plugins) =====
-# ZSH_THEME="powerlevel10k/powerlevel10k"  # Example (replace with your theme)
-ZSH_THEME="dst"
+#!/usr/bin/env zsh
+# ================================================
+# CLEAN ZSH CONFIGURATION
+# ================================================
+# Auto-loads all modules from modules/ directory
+# XDG environment variables are set in ~/.zshenv
 
-# ===== 2. Source Helper Scripts (aliases, paths, etc.) =====
-export PATH="$HOME/dotfile/zsh/scripts:$PATH"
-source $XDG_CONFIG_HOME/zsh/scripts/path.sh
-source $XDG_CONFIG_HOME/zsh/scripts/vimode.sh
-source $XDG_CONFIG_HOME/zsh/scripts/tmux.sh
-source $XDG_CONFIG_HOME/zsh/scripts/utils.sh
-source $XDG_CONFIG_HOME/zsh/scripts/navi.sh
-# source $XDG_CONFIG_HOME/zsh/scripts/alias.sh
+# ===== PERFORMANCE PROFILING (OPTIONAL) =====
+# Uncomment to profile startup time
+# zmodload zsh/zprof
 
-source /usr/share/nvm/init-nvm.sh
-source /usr/share/wikiman/widgets/widget.zsh
+# ===== AUTO-LOAD ALL MODULES =====
+# This automatically sources all .zsh files in modules/
+for module_file in $XDG_CONFIG_HOME/zsh/modules/**/*.zsh(N); do
+  source "$module_file"
+done
 
-# source ~/.fzf.zsh                # fzf keybindings/completion
-[ -f $XDG_CONFIG_HOME/zsh/.fzf.zsh ] && source $XDG_CONFIG_HOME/zsh/.fzf.zsh
+# ===== COMPLETION SYSTEM =====
+# Load completion system
+autoload -Uz compinit
 
-# Enable vi-mode indicator
-VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
-VI_MODE_SET_CURSOR=true
+# Only regenerate compdump once per day
+if [[ -n $XDG_CACHE_HOME/zsh/zcompdump(#qN.mh+24) ]]; then
+  compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
+else
+  compinit -C -d "$XDG_CACHE_HOME/zsh/zcompdump"
+fi
 
-# Then load plugins
-# ===== 3. Configure Oh My Zsh Plugins =====
-plugins=(
-  sudo
-  git            # Git shortcuts (gst, gco, etc.)
-  vi-mode        # Vim keybindings (ESC for Normal mode)
-  zsh-autosuggestions  # Command suggestions (requires manual install)
-  zsh-syntax-highlighting  # Colorful syntax (requires manual install)
-)
+# Completion styling
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'  # Case insensitive
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' rehash true
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*:warnings' format 'No matches found'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:*:-command-:*:*' group-order alias builtins functions commands
 
-# ===== 4. Load Oh My Zsh =====
-source $ZSH/oh-my-zsh.sh
+# ===== EXTERNAL TOOLS =====
+# NVM (Node Version Manager)
+[[ -f /usr/share/nvm/init-nvm.sh ]] && source /usr/share/nvm/init-nvm.sh
 
-source $XDG_CONFIG_HOME/zsh/scripts/alias.sh
+# Wikiman
+[[ -f /usr/share/wikiman/widgets/widget.zsh ]] && source /usr/share/wikiman/widgets/widget.zsh
 
-# ===== 5. Post-Load Config (e.g., vi-mode settings) =====
-# Reduce ESC delay in vi-mode
-export KEYTIMEOUT=0
-
-# Add this to ~/.zshrc
-# function zle-line-init zle-keymap-select {
-#   case $KEYMAP in
-#     vicmd)      VI_MODE="%F{red}[N]%f" ;;  # Normal mode
-#     viins|main) VI_MODE="%F{green}[I]%f" ;; # Insert mode
-#   esac
-#   PROMPT='${VI_MODE} %B%F{blue}%~%f%b %# '  # Update prompt
-#   zle reset-prompt
-# }
-# zle -N zle-line-init
-# zle -N zle-keymap-select
-
-# ff
-# Add at the very end of .zshrc
-bindkey '^R' fzf-history-widget
-export TERM=xterm-kitty
-
-# pnpm
-export PNPM_HOME="/home/yanping/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-source $XDG_CONFIG_HOME/zsh/scripts/vars.sh
+# ===== PERFORMANCE PROFILING OUTPUT =====
+# Uncomment if you enabled profiling at the top
+# zprof

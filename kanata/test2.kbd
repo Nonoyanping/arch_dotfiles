@@ -1,0 +1,6 @@
+(defcfg 
+  process-unmapped-keys false
+  danger-enable-cmd yes
+)
+(defsrc a)
+(deflayer base (cmd "echo yes"))

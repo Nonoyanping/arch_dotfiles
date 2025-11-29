@@ -1,0 +1,43 @@
+export PATH="$HOME/dotfile/zsh/scripts:$PATH"
+
+source $XDG_CONFIG_HOME/zsh/scripts/path.sh
+source $XDG_CONFIG_HOME/zsh/scripts/options.sh
+source $XDG_CONFIG_HOME/zsh/scripts/vimode.sh
+# source $XDG_CONFIG_HOME/zsh/scripts/tmux.sh
+source $XDG_CONFIG_HOME/zsh/scripts/utils.sh
+source $XDG_CONFIG_HOME/zsh/scripts/navi.sh
+# source $XDG_CONFIG_HOME/zsh/scripts/alias.sh
+
+# Enable vi-mode indicator
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_SET_CURSOR=true
+
+source $XDG_CONFIG_HOME/zsh/scripts/alias.sh
+
+# ===== 5. Post-Load Config (e.g., vi-mode settings) =====
+# Reduce ESC delay in vi-mode
+export KEYTIMEOUT=0
+
+export TERM=xterm-kitty
+
+# pnpm
+export PNPM_HOME="/home/yanping/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+source $XDG_CONFIG_HOME/zsh/scripts/vars.sh
+
+source /usr/share/nvm/init-nvm.sh
+source /usr/share/wikiman/widgets/widget.zsh
+
+eval "$(starship init zsh)"
+
+# source ~/.fzf.zsh
+# # fzf keybindings/completion
+[ -f $XDG_CONFIG_HOME/zsh/.fzf.zsh ] && source $XDG_CONFIG_HOME/zsh/.fzf.zsh
+
+# Add at the very end of .zshrc
+bindkey '^R' fzf-history-widget

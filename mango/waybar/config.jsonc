@@ -1,0 +1,92 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 25,
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "reload_style_on_change": true,
+    "modules-left": [
+        "clock"
+    ],
+    "modules-center": [
+        "dwl/tags"
+    ],
+    "modules-right": [
+        "network#simple",
+        "cpu",
+        "memory",
+        "pulseaudio",
+        "battery",
+        "tray"
+    ],
+    "clock": {
+        "format": " {:%H:%M}",
+        "tooltip-format": "{:%a, %b %d}",
+        "interval": 60
+    },
+    "dwl/tags": {
+        "num-tags": 9,
+        "hide-vacant": true,
+        "format": "{icon}",
+        "format-icons": {
+            "occupied": "●",
+            "empty": "○",
+            "urgent": "◎",
+            "active": "◉"
+        }
+    },
+    "network#simple": {
+        "interval": 5,
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-linked": "",
+        "format-disconnected": "",
+        "tooltip": false
+    },
+    "cpu": {
+        "interval": 2,
+        "format": " {load}%",
+        "tooltip": false
+    },
+    "memory": {
+        "interval": 5,
+        "format": " {percentage}%",
+        "tooltip": false
+    },
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-muted": "",
+        "on-click": "pamixer -t",
+        "format-icons": {
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "tooltip": false
+    },
+    "battery": {
+        // Try multiple common battery IDs
+        "bat": [
+            "hidpp_battery_0",
+            "BAT0",
+            "BAT1"
+        ],
+        "interval": 30, // more frequent for visibility
+        "format": "{icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "tooltip-format": "{capacity}%"
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 6
+    }
+}

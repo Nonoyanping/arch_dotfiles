@@ -2,6 +2,11 @@
 // # 03_search.js - Custom search engines #
 // ########################################
 
+// TODO: Quick access to specific pages on sites like github, reddit, etc.
+// Thinking about using something like this:
+//  - ghr for github repo, ghi for github issues, rsub for reddit subreddits, etc.
+//  - LLM -> Qwen, Chatgpt, Gemini, Claude, etc.(lq, lc, lg, lc)?
+
 // Remove defaults we don't use
 // api.removeSearchAlias('b'); // Baidu
 // api.removeSearchAlias('d'); // DuckDuckGo
@@ -40,3 +45,5 @@
 // addSearchAlias('st', 'steam', 'https://store.steampowered.com/search/?term=', 's');
 // addSearchAlias('wiki', 'wikipedia', 'https://en.wikipedia.org/wiki/Special:Search/', 's');
 // addSearchAlias('y', 'yt', 'https://invidious.snopyta.org/search?q=', 's');
+
+

@@ -1,0 +1,48 @@
+#
+#  ██████╗ ██╗████████╗███╗   ███╗██╗   ██╗██╗  ██╗
+# ██╔════╝ ██║╚══██╔══╝████╗ ████║██║   ██║╚██╗██╔╝
+# ██║  ███╗██║   ██║   ██╔████╔██║██║   ██║ ╚███╔╝
+# ██║   ██║██║   ██║   ██║╚██╔╝██║██║   ██║ ██╔██╗
+# ╚██████╔╝██║   ██║   ██║ ╚═╝ ██║╚██████╔╝██╔╝ ██╗
+#  ╚═════╝ ╚═╝   ╚═╝   ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝
+#
+# Git in your tmux status bar
+# https://github.com/arl/gitmux
+
+tmux:
+  symbols:
+    branch: "󰘬 "
+    hashprefix: ": "
+    ahead: "󰜷 "
+    behind: "󰜮 "
+    staged: "󰄬 "
+    conflict: "󰞇 "
+    modified: "󱇨 "
+    untracked: "󰋗 "
+    stashed: "󰏗 "
+    clean: "✓ "
+    insertions: "+ "
+    deletions: "- "
+  styles:
+    clear: "#[none]"
+    state: "#[fg=red,bold]"
+    branch: "#[fg=magenta,bold]"
+    remote: "#[fg=cyan]"
+    divergence: "#[fg=default]"
+    staged: "#[fg=green,bold]"
+    conflict: "#[fg=red,bold]"
+    modified: "#[fg=yellow,bold]"
+    untracked: "#[fg=red,bold]"
+    stashed: "#[fg=cyan,bold]"
+    clean: "#[fg=green,bold]"
+    insertions: "#[fg=green]"
+    deletions: "#[fg=red]"
+  # layout: [branch, " ", remote-branch, divergence, " ", flags]
+  layout: [branch, " ", flags]
+  options:
+    branch_max_len: 20
+    branch_trim: right
+    ellipsis: "…"
+    hide_clean: false
+    swap_divergence: false
+    divergence_space: false

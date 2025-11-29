@@ -1,0 +1,63 @@
+{
+    "appearance": {
+        "wallcolors": {
+            "wallpaper_path": "/home/yanping/Pictures/Wallpapers/N1/01.png",
+            "quickselect_path": "/home/yanping/Pictures/Wallpapers/N1",
+            "color_scheme": "neutral",
+            "auto_dark": {
+                "start_min": 4.0
+            }
+        }
+    },
+    "interface": {
+        "modules": {
+            "location": {
+                "clock": 0
+            },
+            "visibility": {
+                "window_info": false,
+                "media": false,
+                "recording_indicator": false
+            },
+            "bar_id": {},
+            "options": {
+                "fixed_workspaces_enabled": false,
+                "show_date": false
+            }
+        },
+        "bar": {
+            "side": "top",
+            "density": 3,
+            "bar_background": false,
+            "module_backgrounds": false,
+            "floating": true,
+            "vertical": false
+        },
+        "bar2": {
+            "enabled": false,
+            "density": 2,
+            "bar_background": false,
+            "floating": false,
+            "side": "top",
+            "vertical": false
+        },
+        "notifications": {
+            "anchor": [
+                "top"
+            ]
+        },
+        "launcher": {},
+        "misc": {
+            "shell_corners": false
+        }
+    },
+    "services": {
+        "recorder": {},
+        "osd": {
+            "vertical": true,
+            "anchor": [
+                "right"
+            ]
+        }
+    }
+}

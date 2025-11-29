@@ -20,6 +20,7 @@
 | `cf` | Open multiple links in a new tab |
 | `gi` | Go to the first edit box |
 | `gf` | Open a link in non-active new tab |
+| `C` | Open a link in non-active new tab |
 | `[[` | Click on the previous link on current page |
 | `]]` | Click on the next link on current page |
 | `;m` | mouse out last element |
@@ -31,7 +32,6 @@
 | `O` | Open detected links from text |
 | `f` | Open a link, press SHIFT to flip overlapped hints, hold SPACE to hide hints |
 | `af` | Open a link in active new tab |
-| `C` | Open a link in non-active new tab |
 | `Ctrl-h` | Mouse over elements. |
 | `Ctrl-j` | Mouse out elements. |
 | `Ctrl-i` | Go to edit box with vim editor |
@@ -45,8 +45,8 @@
 | `cS` | Reset scroll target |
 | `cs` | Change scroll target |
 | `e` | Scroll half page up |
-| `U` | Scroll full page up |
 | `d` | Scroll half page down |
+| `U` | Scroll full page up |
 | `P` | Scroll full page down |
 | `gg` | Scroll to the top of the page |
 | `G` | Scroll to the bottom of the page |
@@ -182,7 +182,7 @@
 | `oy` | Open Omnibar for youtube Search |
 | `ox` | Open recently closed URL |
 | `oh` | Open URL from history |
-| `HOpen` | opened URL in current tab |
+| `H` | Open opened URL in current tab |
 | `:` | Open commands |
 | `t` | Open a URL |
 | `b` | Open a bookmark |

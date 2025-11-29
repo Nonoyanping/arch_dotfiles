@@ -1,4 +1,4 @@
-#files: 862	version: 5.9
+#files: 877	version: 5.9
 
 _comps=(
 '-' '_precommand'
@@ -223,7 +223,6 @@ _comps=(
 'ctags-universal' '_ctags'
 'ctr' '_ctr'
 'curl' '_curl'
-'cursor' '_cursor'
 'cut' '_cut'
 'cvs' '_cvs'
 'darcs' '_darcs'
@@ -370,6 +369,8 @@ _comps=(
 'fold' '_fold'
 'folder' '_mh'
 'folders' '_mh'
+'foot' '_foot'
+'footclient' '_footclient'
 'fortune' '_fortune'
 'forw' '_mh'
 'fprev' '_mh'
@@ -381,6 +382,7 @@ _comps=(
 'functions' '_typeset'
 'fuser' '_fuser'
 'fusermount' '_fusermount'
+'fuzzel' '_fuzzel'
 'fwhois' '_whois'
 'g++' '_gcc'
 'galeon' '_webbrowser'
@@ -432,6 +434,7 @@ _comps=(
 'ggetopt' '_getopt'
 'ggrep' '_grep'
 'ggv' '_gnome-gv'
+'gh' '_gh'
 'ghead' '_head'
 'ghostscript' '_ghostscript'
 'ghostty' '_ghostty'
@@ -581,6 +584,7 @@ _comps=(
 'gzilla' '_webbrowser'
 'gzip' '_gzip'
 'hash' '_hash'
+'hatch' '_hatch'
 'hd' '_hexdump'
 'head' '_head'
 'heat' '_openstack'
@@ -653,6 +657,7 @@ _comps=(
 'jq' '_jq'
 'jupyter' '_jupyter'
 'kdeconnect-cli' '_kdeconnect'
+'kde-inhibit' '_kde-inhibit'
 'kernel-install' '_kernel-install'
 'keyring' '_keyring'
 'keystone' '_openstack'
@@ -667,6 +672,8 @@ _comps=(
 'konqueror' '_webbrowser'
 'kpartx' '_kpartx'
 'kpdf' '_pdf'
+'krunner' '_krunner'
+'kscreen-doctor' '_kscreen-doctor'
 'ksh' '_sh'
 'ksh88' '_sh'
 'ksh93' '_sh'
@@ -861,6 +868,7 @@ _comps=(
 'ngrep' '_ngrep'
 'nice' '_nice'
 'ninja' '_ninja'
+'niri' '_niri'
 'nkf' '_nkf'
 'nl' '_nl'
 'nm' '_nm'
@@ -894,6 +902,7 @@ _comps=(
 'opusdec' '_opustools'
 'opusenc' '_opustools'
 'opusinfo' '_opustools'
+'p11-kit' '_p11-kit'
 'p4' '_perforce'
 'p4d' '_perforce'
 'pacat' '_pulseaudio'
@@ -966,6 +975,7 @@ _comps=(
 'pkginfo' '_pkginfo'
 'pkgrm' '_pkgrm'
 'pkill' '_pgrep'
+'plasmashell' '_plasmashell'
 'playerctl' '_playerctl'
 'pldd' '_pids'
 'pmake' '_make'
@@ -993,6 +1003,7 @@ _comps=(
 'postmaster' '_postgresql'
 'postqueue' '_postfix'
 'postsuper' '_postfix'
+'powerprofilesctl' '_powerprofilesctl'
 'pr' '_pr'
 'prev' '_mh'
 'print' '_print'
@@ -1201,6 +1212,7 @@ _comps=(
 'ssh-keygen' '_ssh'
 'ssh-keyscan' '_ssh'
 'star' '_tar'
+'starship' '_starship'
 'start' '_initctl'
 'stat' '_stat'
 'status' '_initctl'
@@ -1234,6 +1246,8 @@ _comps=(
 'swayidle' '_swayidle'
 'swaylock' '_swaylock'
 'swaymsg' '_swaymsg'
+'swaync' '_swaync'
+'swaync-client' '_swaync-client'
 'swift' '_swift'
 'swiftc' '_swift'
 'swww' '_swww'
@@ -1312,6 +1326,7 @@ _comps=(
 'true' '_nothing'
 'truncate' '_truncate'
 'truss' '_truss'
+'trust' '_trust'
 'tryaffix' '_ispell'
 'tty' '_tty'
 'ttyctl' '_ttyctl'
@@ -1469,6 +1484,7 @@ _comps=(
 'wipefs' '_wipefs'
 'wl-copy' '_wl-copy'
 'wl-paste' '_wl-paste'
+'wlrctl' '_wlrctl'
 'wodim' '_cdrecord'
 'wpa_cli' '_wpa_cli'
 'wpctl' '_wpctl'
@@ -1530,7 +1546,6 @@ _comps=(
 'xzcat' '_xz'
 'yafc' '_yafc'
 'yash' '_sh'
-'yay' '_yay'
 'yazi' '_yazi'
 'ypbind' '_yp'
 'ypcat' '_yp'
@@ -1709,23 +1724,26 @@ bindkey '^[~' _bash_complete-word
 
 autoload -Uz _alacritty _bat _bluetoothctl _bootctl _busctl \
             _bwrap _cargo _chafa _chezmoi _coredumpctl \
-            _ctr _curl _cursor _dkms _docker \
-            _eza _fastfetch _fd _flatpak _ghostty \
-            _glow _grimpicker _gum _hostnamectl _img2sixel \
-            _insmod _john _journalctl _jupyter _kernel-install \
-            _keyring _kitty _libinput _localectl _loginctl \
-            _lsmod _machinectl _mako _makoctl _meson \
-            _mkinitcpio _mpv _networkctl _ninja _oomctl \
-            _pacman _parallel _paru _patchelf _playerctl \
-            _poetry _pulseaudio _pyenv _resolvectl _rg \
-            _rmmod _run0 _rustup _sd_hosts_or_user_at_host _sd_machines \
-            _sd_outputmodes _sd_unit_files _sensors _sensors-detect _snapper \
-            _sway _swayidle _swaylock _swaymsg _swww \
-            _systemctl _systemd _systemd-analyze _systemd-delta _systemd-inhibit \
-            _systemd-nspawn _systemd-path _systemd-run _systemd-tmpfiles _timedatectl \
-            _tldr _udevadm _udisks2 _upower _uv \
+            _ctr _curl _dkms _docker _eza \
+            _fastfetch _fd _flatpak _foot _footclient \
+            _fuzzel _gh _ghostty _glow _grimpicker \
+            _gum _hatch _hostnamectl _img2sixel _insmod \
+            _john _journalctl _jupyter _kde-inhibit _kernel-install \
+            _keyring _kitty _krunner _kscreen-doctor _libinput \
+            _localectl _loginctl _lsmod _machinectl _mako \
+            _makoctl _meson _mkinitcpio _mpv _networkctl \
+            _ninja _niri _oomctl _p11-kit _pacman \
+            _parallel _paru _patchelf _plasmashell _playerctl \
+            _poetry _powerprofilesctl _pulseaudio _pyenv _resolvectl \
+            _rg _rmmod _run0 _rustup _sd_hosts_or_user_at_host \
+            _sd_machines _sd_outputmodes _sd_unit_files _sensors _sensors-detect \
+            _snapper _starship _sway _swayidle _swaylock \
+            _swaymsg _swaync _swaync-client _swww _systemctl \
+            _systemd _systemd-analyze _systemd-delta _systemd-inhibit _systemd-nspawn \
+            _systemd-path _systemd-run _systemd-tmpfiles _timedatectl _tldr \
+            _trust _udevadm _udisks2 _upower _uv \
             _varlinkctl _wezterm _wikiman _wl-copy _wl-paste \
-            _wpctl _xremap _yay _yazi _yt-dlp \
+            _wlrctl _wpctl _xremap _yazi _yt-dlp \
             _zathura _zoxide _cdr _all_labels _all_matches \
             _alternative _approximate _arg_compile _arguments _bash_completions \
             _cache_invalid _call_function _combination _complete _complete_debug \
