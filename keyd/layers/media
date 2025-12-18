@@ -1,0 +1,8 @@
+[media]
+h = prevsong
+l = nextsong
+space = playpause
+j = volumedown
+k = volumeup
+
+esc = toggle(media)

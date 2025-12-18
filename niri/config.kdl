@@ -275,7 +275,7 @@ binds {
 
     Mod+Shift+Alt+R { spawn "ignis" "run-command" "recorder-record-screen"; }
     Mod+Alt+R { spawn "ignis" "run-command" "recorder-record-portal"; }
-    Mod+Ctrl+P { spawn "ddcutil" "setvcp" "60" "18"; }
+    Mod+Ctrl+P { spawn "ddcutil" "setvcp" "60" "17"; }
 }
 
 overview {

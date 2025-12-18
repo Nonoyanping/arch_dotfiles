@@ -1,0 +1,28 @@
+[vim]
+h = left
+j = down
+k = up
+l = right
+
+a = home
+e = end
+w = C-right
+b = C-left
+d = pagedown
+u = pageup
+
+# y = C-c  # Yank
+# x = C-x  # Cut
+# d = delete
+# ... other vim-like bindings ...
+
+# Editing shortcuts
+# x = C-x
+# c = C-c
+# v = C-v
+# z = C-z
+# a = C-a
+
+
+# Exit this layer by tapping capslock (esc)
+esc = toggle(vim)

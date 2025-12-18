@@ -1,0 +1,17 @@
+[launcher]
+# --- Layer Selection ---
+# Press a key to cleanly switch to a new layer.
+# The macro first turns OFF the 'launcher' layer, then turns ON the target layer.
+
+# v for 'vimnav'
+v = macro(toggle(launcher) toggle(vim))
+
+# m for 'media'
+m = macro(toggle(launcher) toggle(media))
+
+# f for 'fn' keys
+f = macro(toggle(launcher) toggle(fn))
+
+# --- Exit Launcher ---
+# If you enter the launcher by mistake, just tap capslock (esc) to exit.
+esc = toggle(launcher)
